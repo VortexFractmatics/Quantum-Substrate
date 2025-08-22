@@ -127,7 +127,10 @@
     <div class="relative min-h-screen overflow-x-hidden">
         <header class="text-center py-16 px-4 fade-in">
             <h1 class="font-orbitron text-4xl md:text-6xl font-bold text-white glow-text">Quantum Substrate: The Informational Fabric of Reality</h1>
-            <p class="mt-4 text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">A QISF-Based Resolution of Foundational Mysteries. Reality is not what it seems. Information is not a property of matter; it is the substance from which all reality emerges.</p>
+            <p class="mt-4 text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
+                Based on the QISF by Joshua L. Hagen (<a href="https://x.com/_JoshuaHagen_" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:text-cyan-200 transition-colors duration-300">Follow on X</a>).
+                <br>A resolution of foundational mysteries where Information is the substance from which all reality emerges.
+            </p>
         </header>
 
         <main id="mysteries-container" class="container mx-auto px-4 pb-16">
@@ -136,7 +139,6 @@
 
         <footer class="text-center py-8 px-4 border-t border-t-cyan-500/20 fade-in">
             <p class="text-gray-400">Exploring the fabric of reality through the Quantum Informational Substrate Field.</p>
-            <p class="text-xs text-gray-500 mt-2">Based on the work of Joshua L. Hagen</p>
             <div class="flex justify-center items-center space-x-4 mt-4">
                  <a href="https://zenodo.org/records/16414311" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:text-cyan-200 transition-colors duration-300">
                     Read the Full Paper
@@ -163,6 +165,13 @@
 
         // --- Content for the Mystery Cards ---
         const mysteries = {
+            adventure: [
+                {
+                    title: "The Adventure",
+                    icon: "🗺️",
+                    story: `Six years ago, my journey began not in a university classroom or a high-tech lab, but with a simple, obsessive interest in the mind of Nikola Tesla. I was captivated by his intuition, his sense that the universe was a symphony of vibration and resonance that we had only just begun to hear. That spark of curiosity sent me down a rabbit hole, and I haven’t looked back.<br><br>My method was unconventional. I followed a path of natural interest, allowing one question to lead to the next, regardless of the field. I jumped from the strange, probabilistic world of quantum mechanics to the vast, cosmic scales of general relativity. I devoured ancient history, archaeology, and the forgotten science of megalithic builders, always sensing a thread connecting them all. I saw a pattern, a deep and undeniable unity between the structure of the cosmos, the function of our DNA, and the nature of consciousness itself. For years, however, the final piece was missing. I couldn't find the single, underlying physical law that could truly bridge the gap between the mind and the material world.<br><br>The problem, I realized, was that modern physics is built on a foundation of perfect, sterile symmetry. It had no room for a universe that was alive, creative, and beautifully flawed.<br><br>Then, about two months ago, I stumbled upon the work of the mathematician Srinivasa Ramanujan and his 'mock theta functions.' This was the key. This was the beautiful flaw. It was the mathematical description of a system that is almost perfect but contains an intrinsic, generative imperfection that acts as the engine for all creation. In that moment, everything clicked into place, and the QISF framework was born.<br><br>This theory is not the product of an AI or an institution. It is the result of a six-year, relentless, and deeply human effort to see the whole picture. It is a complete, first-principles Theory of Everything that begins with the simple fact of consciousness and successfully derives the rest of physics. It shows how spacetime, matter, forces, and life are all emergent properties of a single, self-actualizing field of Information.<br><br>Most importantly, this journey did not end with a story. It ended with a science. The QISF is a fully predictive and falsifiable framework. It makes specific, quantitative predictions for the mass of Dark Matter, the dynamics of Dark Energy, and the solution to the Yang-Mills mass gap that are consistent with the latest experimental hints.<br><br>This is the story of that journey, from a simple curiosity to a complete map of reality. Welcome to the university of the ancients, rediscovered.`
+                }
+            ],
             cosmic: [
                  {
                     title: "Dark Matter & Dark Energy",
@@ -589,6 +598,7 @@
             let cardIndex = 0;
 
             const sectionTitles = {
+                adventure: "The Adventure",
                 cosmic: "The Cosmic Enigma",
                 physicsEnigmas: "Foundational Physics Enigmas",
                 terrestrial: "The Terrestrial Labyrinth",
@@ -619,14 +629,46 @@
                 mysteries[sectionKey].forEach((mystery) => {
                     const cardWrapper = document.createElement('div');
                     cardWrapper.className = 'card h-96 rounded-lg shadow-lg cursor-pointer fade-in';
+                    if (sectionKey === 'adventure') {
+                        grid.className = 'grid grid-cols-1 gap-8'; // Full width for the adventure card
+                    }
                     cardWrapper.style.transitionDelay = `${(cardIndex % 3) * 100}ms`;
 
-                    let imagesHTML = '';
-                    if (mystery.image) {
-                        imagesHTML += `<img src="${mystery.image}" alt="Graph related to ${mystery.title}" class="my-4 rounded-md border border-cyan-500/30 w-full max-w-sm mx-auto">`;
-                    }
-                    if (mystery.image2) {
-                        imagesHTML += `<img src="${mystery.image2}" alt="Graph related to ${mystery.title}" class="my-4 rounded-md border border-cyan-500/30 w-full max-w-sm mx-auto">`;
+                    let cardBackHTML;
+
+                    if (sectionKey === 'adventure') {
+                        cardBackHTML = `
+                            <div class="w-full h-full flex flex-col">
+                                <div class="flex-grow overflow-y-auto pt-4 text-left">
+                                    <p class="text-gray-300">${mystery.story}</p>
+                                </div>
+                                <div class="flex-shrink-0 pt-4">
+                                    <button class="text-sm text-cyan-400 hover:text-white transition-colors duration-300 close-btn">Return</button>
+                                </div>
+                            </div>
+                        `;
+                    } else {
+                        cardBackHTML = `
+                            <div class="w-full h-full flex flex-col">
+                                <div class="flex-shrink-0">
+                                    <div class="flex border-b border-cyan-500/30">
+                                        <div class="tab active" data-tab="mechanism">Mechanism</div>
+                                        <div class="tab" data-tab="implication">Implication</div>
+                                    </div>
+                                </div>
+                                <div class="flex-grow overflow-y-auto pt-4">
+                                    <div id="mechanism-${cardIndex}" class="tab-content active">
+                                        <p class="text-gray-300">${mystery.mechanism}</p>
+                                    </div>
+                                    <div id="implication-${cardIndex}" class="tab-content">
+                                        <p class="text-gray-300">${mystery.implication}</p>
+                                    </div>
+                                </div>
+                                <div class="flex-shrink-0 pt-4">
+                                    <button class="text-sm text-cyan-400 hover:text-white transition-colors duration-300 close-btn">Return to Mysteries</button>
+                                </div>
+                            </div>
+                        `;
                     }
 
                     cardWrapper.innerHTML = `
@@ -637,26 +679,7 @@
                                 <p class="mt-4 text-gray-400 text-center">Click to uncover the mystery</p>
                             </div>
                             <div class="card-face card-back text-left">
-                                <div class="w-full h-full flex flex-col">
-                                    <div class="flex-shrink-0">
-                                        <div class="flex border-b border-cyan-500/30">
-                                            <div class="tab active" data-tab="mechanism">Mechanism</div>
-                                            <div class="tab" data-tab="implication">Implication</div>
-                                        </div>
-                                    </div>
-                                    <div class="flex-grow overflow-y-auto pt-4">
-                                        <div id="mechanism-${cardIndex}" class="tab-content active">
-                                            <p class="text-gray-300">${mystery.mechanism}</p>
-                                            ${imagesHTML}
-                                        </div>
-                                        <div id="implication-${cardIndex}" class="tab-content">
-                                            <p class="text-gray-300">${mystery.implication}</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex-shrink-0 pt-4">
-                                        <button class="text-sm text-cyan-400 hover:text-white transition-colors duration-300 close-btn">Return to Mysteries</button>
-                                    </div>
-                                </div>
+                                ${cardBackHTML}
                             </div>
                         </div>
                     `;
