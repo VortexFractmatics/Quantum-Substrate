@@ -13,7 +13,6 @@
     <style>
         body {
             font-family: 'Roboto', sans-serif;
-            /* New, stable background image URL */
             background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80');
             background-size: cover;
             background-position: center;
@@ -76,12 +75,10 @@
         .tab {
             cursor: pointer;
             padding: 0.5rem 1rem;
-            border-bottom: 2px solid transparent;
+            border-radius: 6px 6px 0 0;
             transition: all 0.3s ease;
-        }
-        .tab.active {
-            color: #90e0ef;
-            border-bottom-color: #90e0ef;
+            font-weight: 700;
+            margin-right: 4px;
         }
         .tab-content {
             display: none;
@@ -89,6 +86,16 @@
         .tab-content.active {
             display: block;
         }
+        .tab-science { background-color: rgba(0, 122, 255, 0.2); color: #60a5fa; }
+        .tab-meaning { background-color: rgba(139, 92, 246, 0.2); color: #a78bfa; }
+        .tab-dive { background-color: rgba(234, 179, 8, 0.2); color: #facc15; }
+        .tab.active {
+            transform: translateY(-2px);
+            box-shadow: 0 -4px 10px -5px currentColor;
+        }
+        .tab-science.active { background-color: rgba(0, 122, 255, 0.5); }
+        .tab-meaning.active { background-color: rgba(139, 92, 246, 0.5); }
+        .tab-dive.active { background-color: rgba(234, 179, 8, 0.5); }
         /* Custom scrollbar for webkit browsers */
         .card-back::-webkit-scrollbar {
             width: 8px;
@@ -125,7 +132,6 @@
             width: 80%;
             max-width: 400px;
         }
-        /* Updated Swiper Pagination Styles */
         .swiper-pagination-bullet {
             width: 10px;
             height: 10px;
@@ -136,7 +142,6 @@
         .swiper-pagination-bullet-active {
             background: #00bfff; /* Cyan blue for the active dot */
         }
-        /* Custom Swiper Arrow Styles */
         .swiper-button-next, .swiper-button-prev {
             color: #00bfff;
             filter: drop-shadow(0 0 5px #00bfff);
@@ -767,9 +772,9 @@
                             <div class="w-full h-full flex flex-col">
                                 <div class="flex-shrink-0">
                                     <div class="flex border-b border-cyan-500/30 text-sm md:text-base">
-                                        <div class="tab active" data-tab="mechanism">Mechanism</div>
-                                        <div class="tab" data-tab="implication">Implication</div>
-                                        <div class="tab" data-tab="diveIn">Dive In</div>
+                                        <div class="tab tab-science active" data-tab="mechanism">The Science</div>
+                                        <div class="tab tab-meaning" data-tab="implication">The Meaning</div>
+                                        <div class="tab tab-dive" data-tab="diveIn">The Deep Dive</div>
                                     </div>
                                 </div>
                                 <div class="flex-grow overflow-y-auto pt-4">
@@ -896,3 +901,4 @@
     </script>
 </body>
 </html>
+
