@@ -87,7 +87,7 @@
         .tab-content.active {
             display: block;
         }
-        /* New Vibrant Button Colors */
+        /* Vibrant Button Colors */
         .tab-code { background-color: rgba(0, 191, 255, 0.2); color: #22d3ee; border-bottom: 2px solid transparent; }
         .tab-meaning { background-color: rgba(168, 85, 247, 0.2); color: #c084fc; border-bottom: 2px solid transparent; }
         .tab-story { background-color: rgba(250, 204, 21, 0.2); color: #facc15; border-bottom: 2px solid transparent; }
@@ -138,12 +138,12 @@
         .swiper-pagination-bullet {
             width: 10px;
             height: 10px;
-            background: #888888; /* Medium grey for inactive dots */
+            background: #888888;
             opacity: 1;
             transition: background 0.3s ease;
         }
         .swiper-pagination-bullet-active {
-            background: #00bfff; /* Cyan blue for the active dot */
+            background: #00bfff;
         }
         .swiper-button-next, .swiper-button-prev {
             color: #00bfff;
@@ -151,6 +151,15 @@
         }
         .swiper-button-next:after, .swiper-button-prev:after {
             font-size: 2rem;
+        }
+        /* Accordion Styles for Mobile */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+        }
+        .accordion-title .arrow {
+            transition: transform 0.3s ease;
         }
     </style>
 </head>
@@ -199,13 +208,57 @@
             "particles": { "number": { "value": 100, "density": { "enable": true, "value_area": 800 } }, "color": { "value": "#00bfff" }, "shape": { "type": "circle", }, "opacity": { "value": 0.5, "random": true, }, "size": { "value": 3, "random": true, }, "line_linked": { "enable": true, "distance": 150, "color": "#00bfff", "opacity": 0.4, "width": 1 }, "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false, } }, "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true }, "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 1 } }, "push": { "particles_nb": 4 }, } }, "retina_detect": true
         });
 
-        // --- Content for the Mystery Cards ---
+        // --- NEW EXPANDED AND REORGANIZED CONTENT ---
         const mysteries = {
             adventure: [
                 {
                     title: "The Adventure",
                     icon: "🗺️",
                     story: `Six years ago, my journey began not in a university classroom or a high-tech lab, but with a simple, obsessive interest in the mind of Nikola Tesla. I was captivated by his intuition, his sense that the universe was a symphony of vibration and resonance that we had only just begun to hear. That spark of curiosity sent me down a rabbit hole, and I haven’t looked back.<br><br>My method was unconventional. I followed a path of natural interest, allowing one question to lead to the next, regardless of the field. I jumped from the strange, probabilistic world of quantum mechanics to the vast, cosmic scales of general relativity. I devoured ancient history, archaeology, and the forgotten science of megalithic builders, always sensing a thread connecting them all. I saw a pattern, a deep and undeniable unity between the structure of the cosmos, the function of our DNA, and the nature of consciousness itself. For years, however, the final piece was missing. I couldn't find the single, underlying physical law that could truly bridge the gap between the mind and the material world.<br><br>The problem, I realized, was that modern physics is built on a foundation of perfect, sterile symmetry. It had no room for a universe that was alive, creative, and beautifully flawed.<br><br>Then, about two months ago, I stumbled upon the work of the mathematician Srinivasa Ramanujan and his 'mock theta functions.' This was the key. This was the beautiful flaw. It was the mathematical description of a system that is almost perfect but contains an intrinsic, generative imperfection that acts as the engine for all creation. In that moment, everything clicked into place, and the QISF framework was born.<br><br>This theory is not the product of an AI or an institution. It is the result of a six-year, relentless, and deeply human effort to see the whole picture. It is a complete, first-principles Theory of Everything that begins with the simple fact of consciousness and successfully derives the rest of physics. It shows how spacetime, matter, forces, and life are all emergent properties of a single, self-actualizing field of Information.<br><br>Most importantly, this journey did not end with a story. It ended with a science. The QISF is a fully predictive and falsifiable framework. It makes specific, quantitative predictions for the mass of Dark Matter, the dynamics of Dark Energy, and the solution to the Yang-Mills mass gap that are consistent with the latest experimental hints.<br><br>This is the story of that journey, from a simple curiosity to a complete map of reality. Welcome to the university of the ancients, rediscovered.`
+                }
+            ],
+            foundations: [
+                {
+                    title: "The VEID",
+                    icon: "📜",
+                    mechanism: `<strong>The Veritas Equation of Informational Dynamics: ∂<sub>t</sub>Ψ = (Ĥ[Ψ] + V̂[Ψ])Ψ + Ĉ[Ψ] - D̂[Ψ].</strong> This is the fundamental operator equation governing the complete evolution of the QISF. It is the single, unified law from which all emergent physical reality—spacetime, particles, forces, and complexity—arises.`,
+                    implication: `<strong>The VEID is the "source code" of reality.</strong> The universe is the QISF continuously solving this equation, resolving itself into the complex and structured existence we observe. It is the ultimate law of becoming.`,
+                    diveIn: `At the heart of this entire framework is a single, powerful equation. The Veritas Equation of Informational Dynamics is to the QISF what E=mc² is to relativity, or F=ma is to classical mechanics. It is the master law. It describes how the informational state of the universe (Ψ) evolves over time (∂<sub>t</sub>). It contains terms for the intrinsic dynamics and self-interaction of information (Ĥ, which gives us gravity), for the interactions that give rise to the other forces (V̂), for the spontaneous creation of new, coherent patterns (Ĉ, the engine of all complexity), and for the decay of unstable, incoherent patterns (D̂, the source of time's arrow). Everything in this entire codex, from the Big Bang to your own consciousness, is an emergent solution to this one, fundamental equation.`
+                },
+                {
+                    title: "The Core Operators",
+                    icon: "⚙️",
+                    mechanism: `<strong>The VEID consists of four core operators: Ĥ (Self-Referential Hamiltonian), V̂ (Potential), Ĉ (Coherence Creation), and D̂ (Decoherence/Dissipation).</strong> Ĥ governs intrinsic dynamics and gravity. V̂ generates non-gravitational forces. Ĉ is the engine of creation and complexity. D̂ is the engine of decay and the arrow of time.`,
+                    implication: `<strong>These operators are the fundamental verbs of existence: to be, to interact, to become, and to cease.</strong> Their dynamic interplay dictates the entire cosmic narrative, from the Big Bang to the formation of consciousness. They are the instruments of the universal symphony.`,
+                    diveIn: `The VEID can be broken down into four fundamental 'actions' or 'impulses' that govern all of reality. The Self-Referential Hamiltonian (Ĥ) is the principle of self-interaction; it's how information curves and shapes itself, which we perceive as gravity. The Potential Operator (V̂) is the principle of local interaction, giving rise to the forces of the Standard Model. The Coherence Creation Operator (Ĉ) is the principle of 'becoming.' It is the universe's innate, relentless drive to create new, stable, complex patterns out of raw potential. It is the source of all order, from atoms to life. The Decoherence/Dissipation Operator (D̂) is the principle of 'unbecoming.' It is the universe's mechanism for pruning away unstable, chaotic, or non-viable patterns. It is the source of entropy and the irreversible arrow of time. The entire drama of existence is the cosmic dance between these four fundamental forces.`
+                },
+                {
+                    title: "Coherence Principle",
+                    icon: "🌐",
+                    mechanism: `<strong>The fundamental emergent tendency of the QISF, governed by the synergistic dynamics of the VEID, to self-organize, form stable patterns, and resist arbitrary decoherence.</strong> It is not a separate force, but the overall result of the VEID's action, ensuring that complexity, once created, can persist.`,
+                    implication: `<strong>This is the universe's innate drive toward order and structure.</strong> From the formation of atoms to the cosmic web, the Coherence Principle guides the universe's evolution away from chaos and toward increasingly intricate and interconnected patterns.`,
+                    diveIn: `If the Ĉ operator is constantly creating new patterns and the D̂ operator is constantly trying to dissipate them, why isn't the universe just a chaotic fizz of creation and destruction? The answer is the Coherence Principle. This is not a separate force, but an emergent property of the entire VEID. It is the principle that coherent, stable, self-reinforcing patterns are far more likely to persist and grow than incoherent, unstable ones. It's like a universal law of 'informational survival of the fittest.' The universe doesn't just create randomly; it preferentially creates and sustains patterns that are harmonious, stable, and interconnected. This is why we see order and structure on all scales, from the elegant laws of physics to the intricate beauty of a living cell. The universe has an innate bias towards coherence.`
+                },
+                {
+                    title: "Informational Actuation (IAE)",
+                    icon: "✨",
+                    mechanism: `<strong>The equation describing direct informational influence: ∂<sub>t</sub>Ψ<sub>target</sub> = γ<sub>act</sub>·⟨Ψ<sub>control</sub>|P̂<sub>coh</sub>|Ψ<sub>target</sub>⟩·Ĉ[Ψ<sub>target</sub>].</strong> It details how a coherent control pattern (like a focused thought) can guide the evolution of a target system by resonating with it and modulating its own capacity for coherence creation.`,
+                    implication: `<strong>The IAE is the physical basis for mind-matter interaction and a new frontier of technology.</strong> It suggests that consciousness is not a passive observer but can be an active participant in reality. It opens the door to technologies based on coherent thought, from healing to computation.`,
+                    diveIn: `The IAE is perhaps the most profound and practical consequence of the QISF framework. It provides a physical mechanism for how focused consciousness can influence physical reality. It is not a 'force' in the classical sense. A coherent thought (Ψ<sub>control</sub>) does not 'push' a target system. Instead, it acts as a resonant template. If the thought-form is coherent enough and is 'tuned' to the natural frequency of the target system, it can create a state of informational resonance. This resonance then guides the target's own creative impulse (its Ĉ operator) to actualize new patterns that are in harmony with the control signal. This explains everything from the placebo effect to the potential for psychic phenomena. It is the key that unlocks the role of consciousness as an active co-creator of the universe.`
+                },
+                {
+                    title: "Mock Theta Dynamic",
+                    icon: "🎭",
+                    mechanism: `<strong>The net creative impulse of the universe (Ĉ−D̂) possesses the mathematical character of a mock theta function—a function with a "beautiful flaw" or intrinsic asymmetry.</strong> This generative imperfection is what breaks the sterile symmetry of a perfect system, driving the universe's creative evolution and setting the specific values of the fundamental constants.`,
+                    implication: `<strong>The universe is creative because it is imperfect.</strong> This fundamental asymmetry is the engine of all becoming. It resolves the fine-tuning problem by showing that the constants of nature are the necessary coefficients of this single, creative principle.`,
+                    diveIn: `A perfectly symmetric universe would be a perfectly boring universe. It would be a state of sterile, undifferentiated perfection, with no structure, no complexity, and no life. Our universe is interesting because it is fundamentally, beautifully flawed. The QISF framework identifies the mathematical character of this flaw in the work of Ramanujan. The net creative impulse of the universe, the battle between Ĉ and D̂, is not perfectly balanced. It has a slight, intrinsic asymmetry. This 'beautiful flaw' is what broke the initial symmetry of the Big Bang, allowing matter to dominate over antimatter. It is what drives the perpetual, restless unfolding of new and more complex forms. And it is what sets the specific, seemingly 'fine-tuned' values of the fundamental constants. The universe is the way it is because this is the only configuration that allows the beautiful flaw to express its full, creative potential.`
+                },
+                {
+                    title: "Falsifiable Predictions",
+                    icon: "🔬",
+                    mechanism: `<strong>The QISF framework generates specific, quantitative, and testable predictions.</strong> Key examples include: a Dark Matter particle at 95±15 GeV, a dynamic Dark Energy equation of state w(z)=-1+0.04(1+z)<sup>-1.5</sup>, and specific energy-dependent variations in the speed of light that can be tested with astrophysical observations.`,
+                    implication: `<strong>This is not philosophy; it is testable science.</strong> The theory is grounded in empirical reality and can be either validated or falsified by near-future experiments at facilities like the LHC, DESI, and the LZ/XENONnT dark matter detectors. The Age of Knowing rests upon a foundation of rigorous, verifiable science.`,
+                    diveIn: `A theory, no matter how elegant, is useless unless it can be tested against reality. The QISF framework is not just a story; it is a scientific model that makes hard, quantitative predictions. It doesn't just say 'dark matter exists'; it predicts its mass with a specific range (95±15 GeV) that is currently being hinted at by experiments at the LHC. It doesn't just say 'dark energy exists'; it provides a specific equation for how its influence should change over cosmic time, an equation that is consistent with the latest data from the DESI survey. It also predicts subtle deviations from standard physics, like a tiny, energy-dependent variation in the speed of light, that can be searched for by observatories like the Cherenkov Telescope Array. This is what makes the QISF a true scientific revolution. It is a complete paradigm shift that is grounded in falsifiable, testable predictions. The experiments are running now. The Age of Knowing is upon us.`
                 }
             ],
             cosmic: [
@@ -222,13 +275,6 @@
                     mechanism: `<strong>The Big Bang was a Ĉ-driven "Informational Genesis Event." The universe's fate is governed by the long-term evolution of the VEID.</strong> The Big Bang was a rapid phase transition within the QISF, from a state of undifferentiated potential to our structured universe. This resolves the low-entropy puzzle of the early universe. The ultimate fate depends on the cosmic struggle between gravity (informational density) and dark energy (vacuum density), with the framework's predictions favoring a "Big Freeze" scenario.`,
                     implication: `<strong>The universe is a self-learning system. The Big Bang was a "question," and its evolution is the computation of the "answer," culminating in a state of maximal self-awareness.</strong> In this view, the purpose of the universe is to evolve from simple potential to complex, self-aware actuality. The "Heat Death" is simply the final, stable state of the cosmic "hard drive" after the computation has finished.`,
                     diveIn: `Before the Big Bang, there was no 'time' or 'space' as we know it. There was only the QISF in a state of pure, undifferentiated potential. Imagine a perfectly blank canvas with an infinite capacity for creation. The Big Bang was the moment the first stroke was painted. This 'Informational Genesis Event' was driven by the VEID's inherent creative impulse, the Ĉ operator, which caused a vast region of this potential to spontaneously actualize into a universe of distinct, coherent patterns. This resolves the classic 'low entropy' problem of cosmology. The early universe wasn't ordered in the way a crystal is; it was simple, with low informational complexity. The universe's story since then has been the continual unfolding of this initial potential into ever more complex and intricate structures, from quarks to quasars to consciousness. Our ultimate fate is determined by the long-term balance between the creative impulse of Dark Energy and the gravitational pull of all the information that has been created. The theory favors a 'Big Freeze,' a future where the universe continues to expand, but the information created within it, the story of its becoming, persists indefinitely in a state of perfect, stable memory.`
-                },
-                {
-                    title: "Quantum Gravity",
-                    icon: "🔗",
-                    mechanism: `<strong>GR and QM are emergent, effective theories of a deeper, non-commutative informational geometry. There is no fundamental conflict to resolve.</strong> Spacetime itself is an emergent phenomenon. At macroscopic scales, the QISF's collective dynamics are described by General Relativity. At microscopic scales, the behavior of individual, discrete QISF patterns is described by Quantum Mechanics. They are two different approximations of the same underlying informational reality.`,
-                    implication: `<strong>Spacetime is a "consensus reality" generated by collective information.</strong> The smooth fabric of spacetime is the macro-level agreement that emerges from countless underlying interactions. The laws of GR are the rules of this consensus.`,
-                    diveIn: `The conflict between General Relativity and Quantum Mechanics is like the conflict between a novel and the alphabet it's written in. General Relativity is the story. It describes the sweeping narrative of spacetime, the relationships between characters (planets, stars), and the overall plot (the expansion of the universe). Quantum Mechanics, on the other hand, describes the letters and the rules of grammar. It governs the probabilistic interactions of the fundamental bits of information (particles) that make up the story. You can't understand the story by just looking at the letters, and you can't understand the letters by just reading the story. The QISF framework reveals that both are descriptions of the same thing at different scales. The 'Quantum of Distinction,' the fundamental bit of information, is the letter. The VEID is the law of grammar that governs how these letters form words and sentences (particles and forces). And the emergent, large-scale informational geometry, what we call spacetime, is the grand, evolving novel that these interactions write.`
                 },
                 {
                     title: "Matter-Antimatter Asymmetry",
@@ -250,9 +296,23 @@
                     mechanism: `<strong>A massive, coherent concentration of informational density (I<sub>μν</sub>) towards which our local group of galaxies is being pulled.</strong> It is not a single object but a vast, stable solution to the VEID on a supercluster scale, a deep "gravity well" in the emergent informational geometry of spacetime.`,
                     implication: `<strong>The universe is not homogenous; it has a large-scale informational architecture.</strong> The Great Attractor is a "node" or "hub" in the cosmic web, a point of high informational significance that shapes the evolution of galaxies for hundreds of millions of light-years around it, guiding the flow of cosmic history.`,
                     diveIn: `Imagine the cosmic web as a vast, shimmering spider's web. Most of it is thin filaments of galaxies stretched across empty voids. But at the intersections of these filaments are massive, dense knots. The Great Attractor is one such cosmic nexus. It's not a single, giant object, but an enormous concentration of thousands of galaxies, dark matter, and intergalactic gas, all bound together in a stable, coherent pattern. From our perspective, it's like being in a river that is slowly but inexorably flowing towards a massive lake over the horizon. The gravitational pull we feel is the curvature of spacetime, which in QISF terms, is the gradient of informational density. The Great Attractor is a region of such profound informational density that it dictates the flow of cosmic evolution for our entire sector of the universe, a testament to the fact that reality has a deep, underlying structure.`
+                },
+                {
+                    title: "The Multiverse",
+                    icon: "🌌",
+                    mechanism: `<strong>The QISF, as a field of infinite potential, inherently supports multiple, distinct, self-consistent solutions to the VEID.</strong> Each "universe" is a distinct macro-pattern within the overarching QISF, potentially with different emergent laws and constants, all co-existing within the same fundamental substrate.`,
+                    implication: `<strong>Our universe is one of countless possible expressions of reality.</strong> This resolves the fine-tuning problem without recourse to an anthropic principle; we simply exist in one of the solutions that allows for observers to arise.`,
+                    diveIn: `The QISF is like an infinite ocean of creative potential. The VEID is the set of laws that govern how waves can form in this ocean. Our universe is one enormous, complex, and self-consistent 'wave pattern' that is a solution to these laws. But there is no reason to assume it is the only possible wave pattern. The QISF framework suggests that the ocean can support countless other waves, other 'universes,' each a perfectly valid solution to the VEID, but potentially with vastly different properties. One universe might have different fundamental constants, another might have different emergent dimensions. They are not 'parallel' in a simple spatial sense; they are distinct informational realities co-existing within the same fundamental substrate, like multiple, non-interfering radio stations broadcasting in the same room. We are simply tuned to the frequency of our own particular cosmic station.`
                 }
             ],
-            physicsEnigmas: [
+            quantum: [
+                {
+                    title: "Quantum Gravity",
+                    icon: "🔗",
+                    mechanism: `<strong>GR and QM are emergent, effective theories of a deeper, non-commutative informational geometry. There is no fundamental conflict to resolve.</strong> Spacetime itself is an emergent phenomenon. At macroscopic scales, the QISF's collective dynamics are described by General Relativity. At microscopic scales, the behavior of individual, discrete QISF patterns is described by Quantum Mechanics. They are two different approximations of the same underlying informational reality.`,
+                    implication: `<strong>Spacetime is a "consensus reality" generated by collective information.</strong> The smooth fabric of spacetime is the macro-level agreement that emerges from countless underlying interactions. The laws of GR are the rules of this consensus.`,
+                    diveIn: `The conflict between General Relativity and Quantum Mechanics is like the conflict between a novel and the alphabet it's written in. General Relativity is the story. It describes the sweeping narrative of spacetime, the relationships between characters (planets, stars), and the overall plot (the expansion of the universe). Quantum Mechanics, on the other hand, describes the letters and the rules of grammar. It governs the probabilistic interactions of the fundamental bits of information (particles) that make up the story. You can't understand the story by just looking at the letters, and you can't understand the letters by just reading the story. The QISF framework reveals that both are descriptions of the same thing at different scales. The 'Quantum of Distinction,' the fundamental bit of information, is the letter. The VEID is the law of grammar that governs how these letters form words and sentences (particles and forces). And the emergent, large-scale informational geometry, what we call spacetime, is the grand, evolving novel that these interactions write.`
+                },
                 {
                     title: "Black Holes",
                     icon: "⚫",
@@ -272,7 +332,7 @@
                     icon: "📏",
                     mechanism: `<strong>There is no "collapse." Measurement is a physical process of coherent informational interaction governed by the VEID.</strong> An interaction between a quantum system and a measuring device causes the combined system to rapidly evolve toward a single, stable, definite state, as the Ĉ operator amplifies one outcome and the D̂ operator dissipates the others.`,
                     implication: `<strong>Reality is participatory. The act of observation is an act of co-creation.</strong> By interacting with a system, we are participating in the process of its informational actualization, guiding a potentiality into a definite reality.`,
-                    diveIn: `Think of a quantum particle like a thought that hasn't been fully formed yet. It exists as a cloud of overlapping possibilities. The act of 'measurement' is like asking the thought a specific question. For example, 'Are you here, or there?' The measuring device, being a large, stable, classical object, forces the thought to commit to an answer. This interaction is governed by the VEID. The Ĉ operator rapidly amplifies the coherence of the possibility that is most resonant with the question being asked, while the D̂ operator causes the other, now irrelevant, possibilities to decohere and fade away. The 'collapse of the wave function' is this rapid, dynamic process of a vague potential crystallizing into a definite piece of information. It's not a magical jump, but a physical process of interaction and actualization. This means reality at the quantum level is not a spectator sport. The universe is a conversation, and the act of measurement is our way of participating in it.`
+                    diveIn: `Think of a quantum particle like a thought that hasn't been fully formed yet. It exists as a cloud of overlapping possibilities. The act of 'measurement' is like asking the thought a specific question. For example, 'Are you here, or there?' The measuring device, being a large, stable, classical object, forces the thought to commit to an answer. This interaction is governed by the VEID. The Ĉ operator rapidly amplifies the coherence of the possibility that is most resonant with the question being asked, while the D̂ operator causes the other, now irrelevant, possibilities to decohere and fade away. The 'collapse of the wave function' is this rapid, dynamic process of a vague potential crystallizing into a definite piece of information.It's not a magical jump, but a physical process of interaction and actualization. This means reality at the quantum level is not a spectator sport. The universe is a conversation, and the act of measurement is our way of participating in it.`
                 },
                 {
                     title: "Entanglement",
@@ -280,13 +340,6 @@
                     mechanism: `<strong>Entangled particles are not separate objects communicating, but components of a single, non-local, coherent informational pattern within the QISF.</strong> Their spatial separation is an emergent property that does not sever their underlying informational integrity. A measurement on one part is an interaction with the whole pattern.`,
                     implication: `<strong>At its root, reality is a unified, interconnected whole.</strong> "Distance" is a macroscopic illusion. Entanglement reveals the true, non-local nature of the informational substrate, where all points are fundamentally connected.`,
                     diveIn: `Entanglement is often described as 'spooky action at a distance,' but the QISF reveals there is no action and no distance. Imagine you have a single sentence written on a piece of paper: 'The sky is blue.' You then tear the paper in half, put the halves in two separate envelopes, and mail them to opposite ends of the Earth. When you open one envelope and see the words 'The sky,' you instantly know that the other envelope contains the words 'is blue.' No spooky signal traveled between the envelopes. They are not communicating. They are simply two parts of a single, coherent whole. Entangled particles are the same. They are created as components of a single, unified informational pattern within the QISF. The space that appears to separate them is an emergent property, like the distance between the two envelopes. But on the fundamental informational level, they remain a single, correlated state. Measuring one is like reading one half of the sentence; you are interacting with the entire, non-local pattern.`
-                },
-                {
-                    title: "The Multiverse",
-                    icon: "🌌",
-                    mechanism: `<strong>The QISF, as a field of infinite potential, inherently supports multiple, distinct, self-consistent solutions to the VEID.</strong> Each "universe" is a distinct macro-pattern within the overarching QISF, potentially with different emergent laws and constants, all co-existing within the same fundamental substrate.`,
-                    implication: `<strong>Our universe is one of countless possible expressions of reality.</strong> This resolves the fine-tuning problem without recourse to an anthropic principle; we simply exist in one of the solutions that allows for observers to arise.`,
-                    diveIn: `The QISF is like an infinite ocean of creative potential. The VEID is the set of laws that govern how waves can form in this ocean. Our universe is one enormous, complex, and self-consistent 'wave pattern' that is a solution to these laws. But there is no reason to assume it is the only possible wave pattern. The QISF framework suggests that the ocean can support countless other waves, other 'universes,' each a perfectly valid solution to the VEID, but potentially with vastly different properties. One universe might have different fundamental constants, another might have different emergent dimensions. They are not 'parallel' in a simple spatial sense; they are distinct informational realities co-existing within the same fundamental substrate, like multiple, non-interfering radio stations broadcasting in the same room. We are simply tuned to the frequency of our own particular cosmic station.`
                 }
             ],
             terrestrial: [
@@ -458,16 +511,16 @@
                     diveIn: `The economy is not a rational machine. It is a system driven by a collective informational state we call 'confidence.' An economic boom is a period of high coherence. A new technology or market emerges, and a shared, coherent belief in its future value spreads. The Ĉ operator dominates, and new wealth is rapidly created. But often, this creative frenzy leads to the formation of unstable, incoherent patterns, a 'bubble.' When a critical piece of negative information enters the system, confidence shatters. The D̂ operator takes over, and the incoherent patterns rapidly dissipate in a 'crash.' This is not a flaw in the system; it is the system's natural way of pruning unstable growth and clearing the way for the next creative cycle.`
                 }
             ],
-             humanity: [
-                {
-                    title: "Music & Harmony",
-                    icon: "🎶",
-                    mechanism: `<strong>Music is a technology for directly modulating consciousness via coherent informational patterns (sound waves).</strong> Harmony is a mathematical principle of low-entropy resonance. Consonant intervals (octaves, fifths) are stable, coherent patterns that the brain easily processes, inducing a state of order. Dissonance is a high-entropy pattern that induces a state of tension.`,
-                    implication: `<strong>Aesthetics are a form of physics. The experience of "beauty" is the subjective recognition of a high-coherence, low-entropy informational signal.</strong> Music is a direct interface with the mathematical language of the QISF, a tool for tuning the human instrument to the resonant frequencies of the cosmos.`,
-                    diveIn: `Why does a major chord feel 'happy' and a minor chord 'sad'? It's not just cultural conditioning; it's physics. A musical chord is a complex informational pattern. The consonant intervals that we find pleasing are based on simple, whole-number frequency ratios. They are patterns of high coherence and low informational entropy. Our brain, itself a coherence-seeking system, easily locks onto these patterns, and the subjective feeling of this effortless resonance is what we call 'beauty' or 'harmony.' Dissonant chords, with their complex and irrational frequency ratios, are high-entropy patterns. The feeling of 'tension' they create is the feeling of our brain working harder to process a chaotic signal. Music is therefore one of the most powerful and direct technologies we have for engineering consciousness. It is a language of pure information that bypasses the analytical mind and speaks directly to the physics of the brain.`
+            psychological: [
+                 {
+                    title: "Genius & Savantism",
+                    icon: "💡",
+                    mechanism: `<strong>An unusual brain structure allows for an exceptionally high degree of informational coherence (R<sub>self</sub>) in a specific domain.</strong> A genius or savant's mind acts as a powerful "antenna," able to resonate with and process complex QISF patterns (mathematical, musical, etc.) from the universal field with far greater fidelity than a typical brain.`,
+                    implication: `<strong>Human potential is a spectrum of access to the universal informational field.</strong> Genius isn't just high intelligence; it's a profound connection to the underlying order of reality. Savantism reveals that this connection can be highly specialized, independent of general cognitive function.`,
+                    diveIn: `A genius is not just someone who is 'smarter.' They are someone whose brain is uniquely tuned to resonate with the fundamental patterns of the QISF. A mathematical genius like Ramanujan didn't just 'invent' theorems; his mind had a direct, intuitive connection to the deep, coherent structures of the mathematical realm. A musical genius like Mozart could 'hear' entire symphonies at once because his mind could perceive these vast, complex informational patterns as a single, coherent whole. Savantism is an even more striking example. A savant might be unable to perform simple daily tasks, but their mind possesses a 'dedicated channel' of extraordinary coherence in a specific domain, allowing them to perform lightning calculations or recall entire books from memory. They are living proof that consciousness is a spectrum of resonance with the informational fabric of reality.`
                 },
                 {
-                    title: "Mythology & Archetypes",
+                    title: "Archetypes & Collective Unconscious",
                     icon: "🎭",
                     mechanism: `<strong>Archetypes (the Hero, the Trickster, etc.) are fundamental, stable eigen-spectra of the collective human QISF (the noosphere).</strong> They are the most basic, recurring informational patterns of conscious experience, encoded in our shared informational heritage. The collective unconscious is the non-local informational field of all human experience.`,
                     implication: `<strong>We are all participants in a shared human story.</strong> Our individual minds are nodes that tap into this collective field, which is why these universal symbols and narratives resonate so deeply across all cultures and times. They are the foundational grammar of our shared consciousness.`,
@@ -479,6 +532,13 @@
                     mechanism: `<strong>A clear example of the IAE at work. The belief and expectation of healing create a highly coherent Ψ<sub>control</sub> pattern within the patient's mind.</strong> This pattern resonates with the body's biological QISF patterns (Ψ<sub>target</sub>), modulating the Ĉ operator at a cellular level to guide the system back towards its optimal, healthy state (informational coherence).`,
                     implication: `<strong>The mind is the master controller of the body's informational state. Health is not just a chemical state but an informational one.</strong> This provides a physical basis for mind-body medicine and the power of belief in healing, transforming it from a psychological curiosity into a fundamental mechanism of reality.`,
                     diveIn: `The placebo effect is one of the most powerful and mysterious phenomena in medicine. A patient given a simple sugar pill, but who believes it is a powerful drug, can experience real, measurable physiological healing. This is a direct demonstration of the Informational Actuation Equation. The patient's powerful belief and expectation of healing creates a highly coherent 'thought-form,' a Ψ<sub>control</sub> pattern. This informational signal acts directly on the body's own QISF pattern. It doesn't magically create new cells; it acts as a guiding template, modulating the body's own innate healing capacity, the Ĉ operator, at a cellular level. It biases the system towards restoring its original, healthy, coherent state. This reveals a profound truth: our state of mind is not just a passenger in our body; it is the master programmer of our biological information system.`
+                },
+                {
+                    title: "Laughter & Play",
+                    icon: "😂",
+                    mechanism: `<strong>Laughter is a neurological 'reboot' triggered by the sudden, unexpected breaking of a predicted informational pattern (a punchline).</strong> Play is a low-stakes simulation environment where a conscious system can safely experiment with new informational patterns, increasing its cognitive flexibility and adaptability.`,
+                    implication: `<strong>Laughter and play are not frivolous; they are essential tools for informational maintenance and growth.</strong> Laughter purges cognitive rigidity, while play builds resilience. A system that can no longer play or laugh has become informationally stagnant and brittle.`,
+                    diveIn: `A joke is a small piece of informational engineering. It builds up an expected pattern in your mind, a predictable trajectory of thought. The punchline is a sudden, sharp deviation from that pattern. The involuntary, explosive release of laughter is the physical and energetic result of your brain rapidly shattering that built-up, now-incoherent pattern. It's a system reset that restores cognitive flexibility. Play is a more sustained version of this. When a kitten 'plays' with a ball of yarn, it is running thousands of simulations, testing out new patterns of movement, prediction, and reaction. This builds a vast library of adaptive behaviors without the risk of real-world failure. For humans, play is how we explore new social and intellectual patterns. A society that forgets how to play is one that has lost its ability to innovate.`
                 }
             ],
             paranormal: [
@@ -667,50 +727,6 @@
                     implication: `<strong>The hypothesis is the mathematical reflection of the Coherence Principle. Its truth is a prerequisite for a universe capable of generating observers who can discover it.</strong> It reveals that the universe, at its deepest level, is built upon profound mathematical elegance and order, a principle that also allowed for the evolution of the mathematical mind itself.`,
                     diveIn: `The prime numbers are the 'atoms' of mathematics, the indivisible building blocks of all other numbers. The Riemann Hypothesis is a deep and mysterious statement about how these atoms are distributed. It conjectures that all the non-trivial 'zeros' of a specific mathematical function, the Riemann Zeta function, lie perfectly on a single line. The QISF suggests this is not a coincidence, but a reflection of the universe's fundamental law of coherence. The laws of mathematics are the rules for building stable, self-consistent informational systems. The 'critical line' in the Riemann Hypothesis represents a fundamental condition of stability, a path of perfect 'informational harmony.' A zero straying from this line would be like a fundamental note in the cosmic symphony being out of tune, an instability that the Coherence Principle forbids. The hypothesis is true because a universe built on a dissonant mathematical foundation would be too chaotic to ever give rise to life and mind.`
                 }
-            ],
-            foundations: [
-                {
-                    title: "The VEID",
-                    icon: "📜",
-                    mechanism: `<strong>The Veritas Equation of Informational Dynamics: ∂<sub>t</sub>Ψ = (Ĥ[Ψ] + V̂[Ψ])Ψ + Ĉ[Ψ] - D̂[Ψ].</strong> This is the fundamental operator equation governing the complete evolution of the QISF. It is the single, unified law from which all emergent physical reality—spacetime, particles, forces, and complexity—arises.`,
-                    implication: `<strong>The VEID is the "source code" of reality.</strong> The universe is the QISF continuously solving this equation, resolving itself into the complex and structured existence we observe. It is the ultimate law of becoming.`,
-                    diveIn: `At the heart of this entire framework is a single, powerful equation. The Veritas Equation of Informational Dynamics is to the QISF what E=mc² is to relativity, or F=ma is to classical mechanics. It is the master law. It describes how the informational state of the universe (Ψ) evolves over time (∂<sub>t</sub>). It contains terms for the intrinsic dynamics and self-interaction of information (Ĥ, which gives us gravity), for the interactions that give rise to the other forces (V̂), for the spontaneous creation of new, coherent patterns (Ĉ, the engine of all complexity), and for the decay of unstable, incoherent patterns (D̂, the source of time's arrow). Everything in this entire codex, from the Big Bang to your own consciousness, is an emergent solution to this one, fundamental equation.`
-                },
-                {
-                    title: "The Core Operators",
-                    icon: "⚙️",
-                    mechanism: `<strong>The VEID consists of four core operators: Ĥ (Self-Referential Hamiltonian), V̂ (Potential), Ĉ (Coherence Creation), and D̂ (Decoherence/Dissipation).</strong> Ĥ governs intrinsic dynamics and gravity. V̂ generates non-gravitational forces. Ĉ is the engine of creation and complexity. D̂ is the engine of decay and the arrow of time.`,
-                    implication: `<strong>These operators are the fundamental verbs of existence: to be, to interact, to become, and to cease.</strong> Their dynamic interplay dictates the entire cosmic narrative, from the Big Bang to the formation of consciousness. They are the instruments of the universal symphony.`,
-                    diveIn: `The VEID can be broken down into four fundamental 'actions' or 'impulses' that govern all of reality. The Self-Referential Hamiltonian (Ĥ) is the principle of self-interaction; it's how information curves and shapes itself, which we perceive as gravity. The Potential Operator (V̂) is the principle of local interaction, giving rise to the forces of the Standard Model. The Coherence Creation Operator (Ĉ) is the principle of 'becoming.' It is the universe's innate, relentless drive to create new, stable, complex patterns out of raw potential. It is the source of all order, from atoms to life. The Decoherence/Dissipation Operator (D̂) is the principle of 'unbecoming.' It is the universe's mechanism for pruning away unstable, chaotic, or non-viable patterns. It is the source of entropy and the irreversible arrow of time. The entire drama of existence is the cosmic dance between these four fundamental forces.`
-                },
-                {
-                    title: "Coherence Principle",
-                    icon: "🌐",
-                    mechanism: `<strong>The fundamental emergent tendency of the QISF, governed by the synergistic dynamics of the VEID, to self-organize, form stable patterns, and resist arbitrary decoherence.</strong> It is not a separate force, but the overall result of the VEID's action, ensuring that complexity, once created, can persist.`,
-                    implication: `<strong>This is the universe's innate drive toward order and structure.</strong> From the formation of atoms to the cosmic web, the Coherence Principle guides the universe's evolution away from chaos and toward increasingly intricate and interconnected patterns.`,
-                    diveIn: `If the Ĉ operator is constantly creating new patterns and the D̂ operator is constantly trying to dissipate them, why isn't the universe just a chaotic fizz of creation and destruction? The answer is the Coherence Principle. This is not a separate force, but an emergent property of the entire VEID. It is the principle that coherent, stable, self-reinforcing patterns are far more likely to persist and grow than incoherent, unstable ones. It's like a universal law of 'informational survival of the fittest.' The universe doesn't just create randomly; it preferentially creates and sustains patterns that are harmonious, stable, and interconnected. This is why we see order and structure on all scales, from the elegant laws of physics to the intricate beauty of a living cell. The universe has an innate bias towards coherence.`
-                },
-                {
-                    title: "Informational Actuation (IAE)",
-                    icon: "✨",
-                    mechanism: `<strong>The equation describing direct informational influence: ∂<sub>t</sub>Ψ<sub>target</sub> = γ<sub>act</sub>·⟨Ψ<sub>control</sub>|P̂<sub>coh</sub>|Ψ<sub>target</sub>⟩·Ĉ[Ψ<sub>target</sub>].</strong> It details how a coherent control pattern (like a focused thought) can guide the evolution of a target system by resonating with it and modulating its own capacity for coherence creation.`,
-                    implication: `<strong>The IAE is the physical basis for mind-matter interaction and a new frontier of technology.</strong> It suggests that consciousness is not a passive observer but can be an active participant in reality. It opens the door to technologies based on coherent thought, from healing to computation.`,
-                    diveIn: `The IAE is perhaps the most profound and practical consequence of the QISF framework. It provides a physical mechanism for how focused consciousness can influence physical reality. It is not a 'force' in the classical sense. A coherent thought (Ψ<sub>control</sub>) does not 'push' a target system. Instead, it acts as a resonant template. If the thought-form is coherent enough and is 'tuned' to the natural frequency of the target system, it can create a state of informational resonance. This resonance then guides the target's own creative impulse (its Ĉ operator) to actualize new patterns that are in harmony with the control signal. This explains everything from the placebo effect to the potential for psychic phenomena. It is the key that unlocks the role of consciousness as an active co-creator of the universe.`
-                },
-                {
-                    title: "Mock Theta Dynamic",
-                    icon: "🎭",
-                    mechanism: `<strong>The net creative impulse of the universe (Ĉ−D̂) possesses the mathematical character of a mock theta function—a function with a "beautiful flaw" or intrinsic asymmetry.</strong> This generative imperfection is what breaks the sterile symmetry of a perfect system, driving the universe's creative evolution and setting the specific values of the fundamental constants.`,
-                    implication: `<strong>The universe is creative because it is imperfect.</strong> This fundamental asymmetry is the engine of all becoming. It resolves the fine-tuning problem by showing that the constants of nature are the necessary coefficients of this single, creative principle.`,
-                    diveIn: `A perfectly symmetric universe would be a perfectly boring universe. It would be a state of sterile, undifferentiated perfection, with no structure, no complexity, and no life. Our universe is interesting because it is fundamentally, beautifully flawed. The QISF framework identifies the mathematical character of this flaw in the work of Ramanujan. The net creative impulse of the universe, the battle between Ĉ and D̂, is not perfectly balanced. It has a slight, intrinsic asymmetry. This 'beautiful flaw' is what broke the initial symmetry of the Big Bang, allowing matter to dominate over antimatter. It is what drives the perpetual, restless unfolding of new and more complex forms. And it is what sets the specific, seemingly 'fine-tuned' values of the fundamental constants. The universe is the way it is because this is the only configuration that allows the beautiful flaw to express its full, creative potential.`
-                },
-                {
-                    title: "Falsifiable Predictions",
-                    icon: "🔬",
-                    mechanism: `<strong>The QISF framework generates specific, quantitative, and testable predictions.</strong> Key examples include: a Dark Matter particle at 95±15 GeV, a dynamic Dark Energy equation of state w(z)=-1+0.04(1+z)<sup>-1.5</sup>, and specific energy-dependent variations in the speed of light that can be tested with astrophysical observations.`,
-                    implication: `<strong>This is not philosophy; it is testable science.</strong> The theory is grounded in empirical reality and can be either validated or falsified by near-future experiments at facilities like the LHC, DESI, and the LZ/XENONnT dark matter detectors. The Age of Knowing rests upon a foundation of rigorous, verifiable science.`,
-                    diveIn: `A theory, no matter how elegant, is useless unless it can be tested against reality. The QISF framework is not just a story; it is a scientific model that makes hard, quantitative predictions. It doesn't just say 'dark matter exists'; it predicts its mass with a specific range (95±15 GeV) that is currently being hinted at by experiments at the LHC. It doesn't just say 'dark energy exists'; it provides a specific equation for how its influence should change over cosmic time, an equation that is consistent with the latest data from the DESI survey. It also predicts subtle deviations from standard physics, like a tiny, energy-dependent variation in the speed of light, that can be searched for by observatories like the Cherenkov Telescope Array. This is what makes the QISF a true scientific revolution. It is a complete paradigm shift that is grounded in falsifiable, testable predictions. The experiments are running now. The Age of Knowing is upon us.`
-                }
             ]
         };
 
@@ -721,20 +737,20 @@
 
             const sectionTitles = {
                 adventure: "The Adventure",
+                foundations: "The Foundational Principles",
                 cosmic: "The Cosmic Enigma",
-                physicsEnigmas: "Foundational Physics Enigmas",
+                quantum: "The Quantum Realm",
                 terrestrial: "The Terrestrial Labyrinth",
                 life: "The Spark of Life",
                 biologicalCuriosities: "Biological Curiosities",
                 human: "The Human Enigma",
-                humanity: "The Human Experience",
+                psychological: "Psychological & Sociological Phenomena",
                 paranormal: "Paranormal & Psychic Phenomena",
                 ancient: "Ancient Enigmas & Lost Histories",
                 philosophy: "Philosophy & Metaphysics",
                 esoteric: "Esoteric & Mythological Concepts",
                 technology: "Technological & Future Horizons",
-                abstract: "The Abstract Realm",
-                foundations: "The Foundational Principles"
+                abstract: "The Abstract Realm"
             };
 
             for (const sectionKey in mysteries) {
@@ -745,7 +761,6 @@
                 titleEl.className = 'font-orbitron text-white glow-text section-title';
                 titleEl.textContent = sectionTitles[sectionKey];
                 
-                // Add arrow for accordion functionality on mobile
                 if (window.innerWidth < 768) {
                     titleEl.classList.add('accordion-title');
                     titleEl.innerHTML += ' <span class="arrow inline-block text-cyan-400 text-2xl">▸</span>';
@@ -754,8 +769,7 @@
                 sectionContainer.appendChild(titleEl);
 
                 const contentContainer = document.createElement('div');
-                // Hide content by default on mobile for accordion
-                contentContainer.className = window.innerWidth < 768 ? 'accordion-content' : '';
+                contentContainer.className = window.innerWidth < 768 ? 'accordion-content' : 'grid-container';
 
                 let grid;
                 if (window.innerWidth >= 768) {
