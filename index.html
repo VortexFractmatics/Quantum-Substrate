@@ -31,16 +31,16 @@
             font-family: 'Orbitron', sans-serif;
         }
         .card {
-            background: rgba(10, 25, 47, 0.8);
+            background: rgba(10, 25, 47, 0.85);
             border: 1px solid rgba(0, 191, 255, 0.3);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             perspective: 1000px;
             height: 24rem; /* Fixed height for all cards */
         }
         .card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 0 25px rgba(0, 191, 255, 0.5);
+            box-shadow: 0 0 30px rgba(0, 191, 255, 0.6);
         }
         .card-inner {
             position: relative;
@@ -79,6 +79,7 @@
             transition: all 0.3s ease;
             font-weight: 700;
             margin-right: 4px;
+            border: 1px solid transparent;
         }
         .tab-content {
             display: none;
@@ -86,16 +87,18 @@
         .tab-content.active {
             display: block;
         }
-        .tab-science { background-color: rgba(0, 122, 255, 0.2); color: #60a5fa; }
-        .tab-meaning { background-color: rgba(139, 92, 246, 0.2); color: #a78bfa; }
-        .tab-dive { background-color: rgba(234, 179, 8, 0.2); color: #facc15; }
+        /* New Vibrant Button Colors */
+        .tab-code { background-color: rgba(0, 191, 255, 0.2); color: #22d3ee; border-bottom: 2px solid transparent; }
+        .tab-meaning { background-color: rgba(168, 85, 247, 0.2); color: #c084fc; border-bottom: 2px solid transparent; }
+        .tab-story { background-color: rgba(250, 204, 21, 0.2); color: #facc15; border-bottom: 2px solid transparent; }
+
         .tab.active {
             transform: translateY(-2px);
-            box-shadow: 0 -4px 10px -5px currentColor;
         }
-        .tab-science.active { background-color: rgba(0, 122, 255, 0.5); }
-        .tab-meaning.active { background-color: rgba(139, 92, 246, 0.5); }
-        .tab-dive.active { background-color: rgba(234, 179, 8, 0.5); }
+        .tab-code.active { background-color: rgba(0, 191, 255, 0.5); border-color: #22d3ee; }
+        .tab-meaning.active { background-color: rgba(168, 85, 247, 0.5); border-color: #c084fc; }
+        .tab-story.active { background-color: rgba(250, 204, 21, 0.5); border-color: #facc15; }
+
         /* Custom scrollbar for webkit browsers */
         .card-back::-webkit-scrollbar {
             width: 8px;
@@ -367,7 +370,28 @@
                     diveIn: `From a purely reproductive standpoint, sex is inefficient. An asexual organism passes on 100% of its genes, while a sexual one passes on only 50%. So why is sex the dominant strategy for complex life? Because it is a revolutionary informational technology. Asexual reproduction is like making a perfect photocopy of a book. It's great for preservation, but terrible for innovation. Sexual reproduction is like taking two books, cutting them up, and recombining the pages to create a brand new story. This process of genetic recombination vastly accelerates the rate at which evolution can explore the landscape of possible adaptations. In a constantly changing informational environment, with co-evolving predators, prey, and parasites, the ability to innovate and adapt is far more valuable than simple preservation. Sex is the biosphere's engine of creativity and collective learning.`
                 }
             ],
-             biologicalCuriosities: [
+            biologicalCuriosities: [
+                {
+                    title: "Photosynthesis",
+                    icon: "🌿",
+                    mechanism: `<strong>A biological technology for converting low-coherence light (photons) into high-coherence chemical energy (glucose).</strong> Chlorophyll acts as a quantum antenna, capturing photon information and using it to drive a chemical process where Ĉ[Ψ] > D̂[Ψ], creating a stable, information-rich molecule.`,
+                    implication: `<strong>Plants are the planet's primary informational engineers, turning the chaotic energy of the sun into the ordered fuel for the entire biosphere.</strong> Photosynthesis is the foundational act of creating coherence from chaos on Earth, the engine that powers nearly all life.`,
+                    diveIn: `A plant is a quiet miracle of informational engineering. It takes the most chaotic, high-entropy energy source available—raw sunlight—and transforms it into a perfectly ordered, stable, and information-rich structure: a sugar molecule. The chlorophyll in a leaf is a sophisticated quantum antenna, perfectly tuned to capture the informational signature of a photon. This captured information is then used to power a tiny molecular factory that takes simple, low-coherence molecules (carbon dioxide and water) and builds them into a complex, high-coherence one (glucose). This process is the foundation of almost every food chain on Earth. It is the primary mechanism by which the biosphere captures and stores coherent information, turning the raw energy of a star into the fuel for life, consciousness, and evolution.`
+                },
+                {
+                    title: "Mycorrhizal Networks",
+                    icon: "🍄",
+                    mechanism: `<strong>A subterranean, symbiotic informational network connecting plants via fungal hyphae.</strong> This "Wood Wide Web" allows for the non-local transfer of coherent information (nutrients, stress signals) between nodes (trees), increasing the overall coherence and resilience of the entire forest ecosystem.`,
+                    implication: `<strong>A forest is not a collection of individual trees; it is a single, intelligent, distributed consciousness.</strong> The mycorrhizal network is its nervous system, a shared informational field that allows the forest to learn, adapt, and behave as a unified superorganism.`,
+                    diveIn: `Beneath the quiet floor of a forest lies a bustling, intelligent network. The roots of the trees are interwoven with the fine threads of mycorrhizal fungi, creating a vast, subterranean biological internet. This network is not just a passive plumbing system for nutrients; it is a dynamic information highway. Trees use it to communicate. A tree under attack from insects can send a chemical warning signal through the network to its neighbors, who then raise their own defenses. A dying 'mother tree' can intentionally send its remaining resources to its kin. This network transforms a simple collection of competing trees into a single, cooperative, and intelligent superorganism. It is a planetary-scale example of how the Coherence Principle drives individual systems to connect and form larger, more resilient, and more complex informational patterns.`
+                },
+                {
+                    title: "Herbology & Plant Medicine",
+                    icon: "🧪",
+                    mechanism: `<strong>A plant's "medicinal" properties are due to the specific, coherent informational signature of its phytochemicals.</strong> A "healing" molecule is one whose QISF pattern resonates with and restores coherence to a decoherent biological system in a human. A "poison" is a molecule whose pattern disrupts coherence.`,
+                    implication: `<strong>Ancient herbalism was a form of applied informational science.</strong> Shamans and healers were not just mixing potions; they were skilled informational engineers, identifying and applying specific, coherent patterns from the plant kingdom to correct informational errors in the human system.`,
+                    diveIn: `Why does willow bark ease a headache? Because it contains salicin, a molecule whose specific, coherent informational pattern resonates with the body's inflammation pathways, helping to restore them to a state of stable, low-entropy function. From a QISF perspective, all of herbology can be understood in this way. A plant is a chemical factory that produces a vast library of complex, coherent informational patterns. A "healing" herb is a plant that has, through evolution, perfected a molecule that acts as a 'key' to fit a specific 'lock' in another biological system. An ancient healer was an intuitive physicist, a librarian of these informational keys, who understood which plant's signature was needed to restore coherence and order to a specific point of decoherence (an illness) in the human body.`
+                },
                 {
                     title: "Aging & Death",
                     icon: "💀",
@@ -434,16 +458,16 @@
                     diveIn: `The economy is not a rational machine. It is a system driven by a collective informational state we call 'confidence.' An economic boom is a period of high coherence. A new technology or market emerges, and a shared, coherent belief in its future value spreads. The Ĉ operator dominates, and new wealth is rapidly created. But often, this creative frenzy leads to the formation of unstable, incoherent patterns, a 'bubble.' When a critical piece of negative information enters the system, confidence shatters. The D̂ operator takes over, and the incoherent patterns rapidly dissipate in a 'crash.' This is not a flaw in the system; it is the system's natural way of pruning unstable growth and clearing the way for the next creative cycle.`
                 }
             ],
-            psychological: [
+             humanity: [
                 {
-                    title: "Genius & Savantism",
-                    icon: "💡",
-                    mechanism: `<strong>An unusual brain structure allows for an exceptionally high degree of informational coherence (R<sub>self</sub>) in a specific domain.</strong> A genius or savant's mind acts as a powerful "antenna," able to resonate with and process complex QISF patterns (mathematical, musical, etc.) from the universal field with far greater fidelity than a typical brain.`,
-                    implication: `<strong>Human potential is a spectrum of access to the universal informational field.</strong> Genius isn't just high intelligence; it's a profound connection to the underlying order of reality. Savantism reveals that this connection can be highly specialized, independent of general cognitive function.`,
-                    diveIn: `A genius is not just someone who is 'smarter.' They are someone whose brain is uniquely tuned to resonate with the fundamental patterns of the QISF. A mathematical genius like Ramanujan didn't just 'invent' theorems; his mind had a direct, intuitive connection to the deep, coherent structures of the mathematical realm. A musical genius like Mozart could 'hear' entire symphonies at once because his mind could perceive these vast, complex informational patterns as a single, coherent whole. Savantism is an even more striking example. A savant might be unable to perform simple daily tasks, but their mind possesses a 'dedicated channel' of extraordinary coherence in a specific domain, allowing them to perform lightning calculations or recall entire books from memory. They are living proof that consciousness is a spectrum of resonance with the informational fabric of reality.`
+                    title: "Music & Harmony",
+                    icon: "🎶",
+                    mechanism: `<strong>Music is a technology for directly modulating consciousness via coherent informational patterns (sound waves).</strong> Harmony is a mathematical principle of low-entropy resonance. Consonant intervals (octaves, fifths) are stable, coherent patterns that the brain easily processes, inducing a state of order. Dissonance is a high-entropy pattern that induces a state of tension.`,
+                    implication: `<strong>Aesthetics are a form of physics. The experience of "beauty" is the subjective recognition of a high-coherence, low-entropy informational signal.</strong> Music is a direct interface with the mathematical language of the QISF, a tool for tuning the human instrument to the resonant frequencies of the cosmos.`,
+                    diveIn: `Why does a major chord feel 'happy' and a minor chord 'sad'? It's not just cultural conditioning; it's physics. A musical chord is a complex informational pattern. The consonant intervals that we find pleasing are based on simple, whole-number frequency ratios. They are patterns of high coherence and low informational entropy. Our brain, itself a coherence-seeking system, easily locks onto these patterns, and the subjective feeling of this effortless resonance is what we call 'beauty' or 'harmony.' Dissonant chords, with their complex and irrational frequency ratios, are high-entropy patterns. The feeling of 'tension' they create is the feeling of our brain working harder to process a chaotic signal. Music is therefore one of the most powerful and direct technologies we have for engineering consciousness. It is a language of pure information that bypasses the analytical mind and speaks directly to the physics of the brain.`
                 },
                 {
-                    title: "Archetypes & Collective Unconscious",
+                    title: "Mythology & Archetypes",
                     icon: "🎭",
                     mechanism: `<strong>Archetypes (the Hero, the Trickster, etc.) are fundamental, stable eigen-spectra of the collective human QISF (the noosphere).</strong> They are the most basic, recurring informational patterns of conscious experience, encoded in our shared informational heritage. The collective unconscious is the non-local informational field of all human experience.`,
                     implication: `<strong>We are all participants in a shared human story.</strong> Our individual minds are nodes that tap into this collective field, which is why these universal symbols and narratives resonate so deeply across all cultures and times. They are the foundational grammar of our shared consciousness.`,
@@ -703,7 +727,7 @@
                 life: "The Spark of Life",
                 biologicalCuriosities: "Biological Curiosities",
                 human: "The Human Enigma",
-                psychological: "Psychological & Sociological Phenomena",
+                humanity: "The Human Experience",
                 paranormal: "Paranormal & Psychic Phenomena",
                 ancient: "Ancient Enigmas & Lost Histories",
                 philosophy: "Philosophy & Metaphysics",
@@ -772,9 +796,9 @@
                             <div class="w-full h-full flex flex-col">
                                 <div class="flex-shrink-0">
                                     <div class="flex border-b border-cyan-500/30 text-sm md:text-base">
-                                        <div class="tab tab-science active" data-tab="mechanism">The Science</div>
+                                        <div class="tab tab-code active" data-tab="mechanism">The Code</div>
                                         <div class="tab tab-meaning" data-tab="implication">The Meaning</div>
-                                        <div class="tab tab-dive" data-tab="diveIn">The Deep Dive</div>
+                                        <div class="tab tab-story" data-tab="diveIn">The Story</div>
                                     </div>
                                 </div>
                                 <div class="flex-grow overflow-y-auto pt-4">
@@ -850,7 +874,15 @@
                 const accordionTitles = document.querySelectorAll('.accordion-title');
                 accordionTitles.forEach(title => {
                     title.addEventListener('click', () => {
-                        title.classList.toggle('active');
+                        const content = title.nextElementSibling;
+                        const arrow = title.querySelector('.arrow');
+                        if (content.style.maxHeight) {
+                            content.style.maxHeight = null;
+                            arrow.style.transform = 'rotate(0deg)';
+                        } else {
+                            content.style.maxHeight = content.scrollHeight + "px";
+                            arrow.style.transform = 'rotate(90deg)';
+                        } 
                     });
                 });
             }
@@ -901,4 +933,3 @@
     </script>
 </body>
 </html>
-
