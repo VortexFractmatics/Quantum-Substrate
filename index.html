@@ -1,323 +1,205 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Quantum Substrate: The Informational Fabric of Reality</title>
-	<meta name="description" content="Dive into the Quantum Informational Substrate Field (QISF) – a revolutionary theory unifying physics, consciousness, and ancient mysteries. Updated with 2025 breakthroughs confirming predictions!">
-	<script src="https://cdn.tailwindcss.com"></script>
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-	<style>
-		body {
-			font-family: 'Roboto', sans-serif;
-			background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80');
-			background-size: cover;
-			background-position: center;
-			background-attachment: fixed;
-			color: #e0e0e0;
-		}
-		#particles-js {
-			position: fixed;
-			width: 100%;
-			height: 100%;
-			top: 0;
-			left: 0;
-			z-index: -1;
-		}
-		.font-orbitron {
-			font-family: 'Orbitron', sans-serif;
-		}
-		/* --- UPDATED: Base card styles --- */
-		.card {
-			background: rgba(10, 25, 47, 0.9);
-			border: 1px solid rgba(0, 191, 255, 0.3);
-			backdrop-filter: blur(14px);
-			perspective: 1000px;
-			height: 28rem;
-			width: 22rem;
-			border-radius: 1rem;
-			position: relative; /* Needed for positioning inside the carousel */
-		}
-		.card-inner {
-			position: relative;
-			width: 100%;
-			height: 100%;
-			transition: transform 0.8s;
-			transform-style: preserve-3d;
-		}
-		.card.is-flipped .card-inner {
-			transform: rotateY(180deg);
-		}
-		.card-face {
-			position: absolute;
-			width: 100%;
-			height: 100%;
-			-webkit-backface-visibility: hidden;
-			backface-visibility: hidden;
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-			padding: 1.5rem;
-		}
-		.card-back {
-			transform: rotateY(180deg);
-			justify-content: flex-start;
-			overflow-y: auto;
-		}
-		.glow-text {
-			text-shadow: 0 0 8px rgba(0, 191, 255, 0.8), 0 0 15px rgba(0, 191, 255, 0.4);
-		}
-		.tab {
-			cursor: pointer;
-			padding: 0.5rem 1rem;
-			border-radius: 6px 6px 0 0;
-			transition: all 0.3s ease;
-			font-weight: 700;
-			margin-right: 4px;
-			border: 1px solid transparent;
-		}
-		.tab-content { display: none; }
-		.tab-content.active { display: block; }
-		.tab-code { background-color: rgba(0, 191, 255, 0.2); color: #22d3ee; border-bottom: 2px solid transparent; }
-		.tab-meaning { background-color: rgba(168, 85, 247, 0.2); color: #c084fc; border-bottom: 2px solid transparent; }
-		.tab-story { background-color: rgba(250, 204, 21, 0.2); color: #facc15; border-bottom: 2px solid transparent; }
-		.tab.active { transform: translateY(-2px); }
-		.tab-code.active { background-color: rgba(0, 191, 255, 0.5); border-color: #22d3ee; }
-		.tab-meaning.active { background-color: rgba(168, 85, 247, 0.5); border-color: #c084fc; }
-		.tab-story.active { background-color: rgba(250, 204, 21, 0.5); border-color: #facc15; }
-		.card-back::-webkit-scrollbar { width: 8px; }
-		.card-back::-webkit-scrollbar-track { background: rgba(10, 25, 47, 0.1); }
-		.card-back::-webkit-scrollbar-thumb { background-color: rgba(0, 191, 255, 0.5); border-radius: 4px; }
-		.fade-in {
-			opacity: 0;
-			transform: translateY(20px);
-			transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-		}
-		.fade-in.visible {
-			opacity: 1;
-			transform: translateY(0);
-		}
-		.section-title {
-			text-align: center;
-			margin-top: 4rem;
-			margin-bottom: 2rem;
-			font-size: 2.5rem;
-		}
-		
-		/* --- NEW/UPDATED: STYLES FOR TRUE 3D CAROUSEL --- */
-		.carousel-container {
-			position: relative;
-			width: 100%;
-			height: 30rem; /* Give the container a fixed height */
-			perspective: 1500px; /* This creates the 3D space! */
-			margin-top: 4rem;
-			margin-bottom: 4rem;
-		}
-		.carousel-wheel {
-			width: 100%;
-			height: 100%;
-			position: relative;
-			transform-style: preserve-3d;
-			transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1);
-			cursor: grab;
-		}
-		.carousel-wheel:active {
-			cursor: grabbing;
-		}
-		.carousel-card {
-			position: absolute;
-			left: 0;
-			right: 0;
-			margin: auto;
-			/* CSS variables will be set by JS */
-			transform: rotateY(var(--angle)) translateZ(var(--radius));
-			backface-visibility: hidden; /* Hide back of cards when rotated */
-			/* Added for 3D tilt effect */
-			transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1), box-shadow 0.3s ease;
-		}
-		.carousel-card:hover {
-			box-shadow: 0 0 30px rgba(0, 191, 255, 0.6), 0 0 50px rgba(0, 191, 255, 0.4);
-		}
-		.carousel-nav {
-			display: none; /* Hidden on mobile */
-		}
-		@media (min-width: 768px) {
-			.carousel-nav {
-				display: block; /* Shown on desktop */
-				position: absolute;
-				top: 50%;
-				transform: translateY(-50%);
-				width: 4rem;
-				height: 4rem;
-				background: rgba(10, 25, 47, 0.8);
-				border: 1px solid rgba(0, 191, 255, 0.3);
-				border-radius: 50%;
-				color: #e0e0e0;
-				font-size: 1.5rem;
-				cursor: pointer;
-				z-index: 10;
-				transition: all 0.3s ease;
-			}
-			.carousel-nav:hover {
-				background: rgba(0, 191, 255, 0.5);
-				transform: translateY(-50%) scale(1.1);
-			}
-			.carousel-nav.prev { left: -5rem; }
-			.carousel-nav.next { right: -5rem; }
-		}
+<!DOCTYPE html> 
+ <html lang="en" class="scroll-smooth"> 
+ <head> 
+ 	<meta charset="UTF-8"> 
+ 	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+ 	<title>Quantum Substrate: The Informational Fabric of Reality</title> 
+ 	<meta name="description" content="Dive into the Quantum Informational Substrate Field (QISF) – a revolutionary theory unifying physics, consciousness, and ancient mysteries. Updated with 2025 breakthroughs confirming predictions!"> 
+ 	<script src="https://cdn.tailwindcss.com"></script> 
+ 	<link rel="preconnect" href="https://fonts.googleapis.com"> 
+ 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+ 	<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet"> 
+ 	<!-- Swiper.js for Carousel --> 
+ 	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" /> 
+ 	<!-- Font Awesome for Icons --> 
+ 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> 
+ 	<style> 
+ 		body { 
+ 			font-family: 'Roboto', sans-serif; 
+ 			background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80'); 
+ 			background-size: cover; 
+ 			background-position: center; 
+ 			background-attachment: fixed; 
+ 			color: #e0e0e0; 
+ 		} 
+ 		#particles-js { 
+ 			position: fixed; 
+ 			width: 100%; 
+ 			height: 100%; 
+ 			top: 0; 
+ 			left: 0; 
+ 			z-index: -1; 
+ 		} 
+ 		.font-orbitron { 
+ 			font-family: 'Orbitron', sans-serif; 
+ 		} 
+ 		.card { 
+ 			background: rgba(10, 25, 47, 0.9); 
+ 			border: 1px solid rgba(0, 191, 255, 0.3); 
+ 			backdrop-filter: blur(14px); 
+ 			transition: transform 0.3s ease, box-shadow 0.3s ease; 
+ 			perspective: 1000px; 
+ 			height: 28rem; /* Adjusted height for potentially more content */ 
+ 			border-radius: 1rem; 
+ 		} 
+ 		.card:hover { 
+ 			transform: translateY(-10px); 
+ 			box-shadow: 0 0 30px rgba(0, 191, 255, 0.6); 
+ 		} 
+ 		.card-inner { 
+ 			position: relative; 
+ 			width: 100%; 
+ 			height: 100%; 
+ 			transition: transform 0.8s; 
+ 			transform-style: preserve-3d; 
+ 		} 
+ 		.card.is-flipped .card-inner { 
+ 			transform: rotateY(180deg); 
+ 		} 
+ 		.card-face { 
+ 			position: absolute; 
+ 			width: 100%; 
+ 			height: 100%; 
+ 			-webkit-backface-visibility: hidden; 
+ 			backface-visibility: hidden; 
+ 			display: flex; 
+ 			flex-direction: column; 
+ 			justify-content: center; 
+ 			align-items: center; 
+ 			padding: 1.5rem; 
+ 		} 
+ 		.card-back { 
+ 			transform: rotateY(180deg); 
+ 			justify-content: flex-start; 
+ 			overflow-y: auto; 
+ 		} 
+ 		.glow-text { 
+ 			text-shadow: 0 0 8px rgba(0, 191, 255, 0.8), 0 0 15px rgba(0, 191, 255, 0.4); 
+ 		} 
+ 		.tab { 
+ 			cursor: pointer; 
+ 			padding: 0.5rem 1rem; 
+ 			border-radius: 6px 6px 0 0; 
+ 			transition: all 0.3s ease; 
+ 			font-weight: 700; 
+ 			margin-right: 4px; 
+ 			border: 1px solid transparent; 
+ 		} 
+ 		.tab-content { 
+ 			display: none; 
+ 		} 
+ 		.tab-content.active { 
+ 			display: block; 
+ 		} 
+ 		.tab-code { background-color: rgba(0, 191, 255, 0.2); color: #22d3ee; border-bottom: 2px solid transparent; } 
+ 		.tab-meaning { background-color: rgba(168, 85, 247, 0.2); color: #c084fc; border-bottom: 2px solid transparent; } 
+ 		.tab-story { background-color: rgba(250, 204, 21, 0.2); color: #facc15; border-bottom: 2px solid transparent; } 
 
-		/* --- NEW/UPDATED: Utility and Navigation Styles --- */
-		.nav-blur {
-			background: rgba(10, 25, 47, 0.8);
-			backdrop-filter: blur(10px);
-		}
-		#back-to-top {
-			position: fixed;
-			bottom: 20px;
-			right: 20px;
-			background: rgba(0, 191, 255, 0.5);
-			color: white;
-			width: 50px;
-			height: 50px;
-			border-radius: 50%;
-			display: none;
-			place-items: center;
-			cursor: pointer;
-			transition: opacity 0.3s, transform 0.3s;
-			z-index: 100;
-		}
-		#back-to-top:hover {
-			background: rgba(0, 191, 255, 0.8);
-			transform: translateY(-5px);
-		}
-		#animation-control {
-			position: fixed;
-			bottom: 20px;
-			left: 20px;
-			background: rgba(10, 25, 47, 0.8);
-			color: #e0e0e0;
-			border: 1px solid rgba(0, 191, 255, 0.3);
-			width: 50px;
-			height: 50px;
-			border-radius: 50%;
-			display: grid;
-			place-items: center;
-			cursor: pointer;
-			transition: background-color 0.3s;
-			z-index: 100;
-		}
-		#animation-control:hover {
-			background: rgba(0, 191, 255, 0.5);
-		}
-		.quick-link-card {
-			background: rgba(10, 25, 47, 0.9);
-			border: 1px solid rgba(0, 191, 255, 0.3);
-			backdrop-filter: blur(14px);
-			transition: transform 0.3s ease, box-shadow 0.3s ease;
-			border-radius: 0.75rem;
-		}
-		.quick-link-card:hover {
-			transform: translateY(-5px) scale(1.05);
-			box-shadow: 0 0 20px rgba(0, 191, 255, 0.5);
-			color: #22d3ee;
-		}
-		.nav-link.active {
-			color: #22d3ee;
-			text-shadow: 0 0 8px rgba(0, 191, 255, 0.8);
-		}
-	</style>
-</head>
-<body class="antialiased">
+ 		.tab.active { 
+ 			transform: translateY(-2px); 
+ 		} 
+ 		.tab-code.active { background-color: rgba(0, 191, 255, 0.5); border-color: #22d3ee; } 
+ 		.tab-meaning.active { background-color: rgba(168, 85, 247, 0.5); border-color: #c084fc; } 
+ 		.tab-story.active { background-color: rgba(250, 204, 21, 0.5); border-color: #facc15; } 
 
-	<div id="particles-js"></div>
+ 		.card-back::-webkit-scrollbar { width: 8px; } 
+ 		.card-back::-webkit-scrollbar-track { background: rgba(10, 25, 47, 0.1); } 
+ 		.card-back::-webkit-scrollbar-thumb { background-color: rgba(0, 191, 255, 0.5); border-radius: 4px; } 
+ 		 
+ 		.fade-in { 
+ 			opacity: 0; 
+ 			transform: translateY(20px); 
+ 			transition: opacity 0.6s ease-out, transform 0.6s ease-out; 
+ 		} 
+ 		.fade-in.visible { 
+ 			opacity: 1; 
+ 			transform: translateY(0); 
+ 		} 
+ 		.section-title { 
+ 			text-align: center; 
+ 			margin-top: 4rem; 
+ 			margin-bottom: 2rem; 
+ 			font-size: 2.5rem; 
+ 		} 
+ 		.swiper-container { 
+ 			width: 100%; 
+ 			padding-top: 20px; 
+ 			padding-bottom: 50px; 
+ 		} 
+ 		.swiper-slide { 
+ 			width: 80%; 
+ 			max-width: 400px; 
+ 		} 
+ 		.swiper-pagination-bullet-active { 
+ 			background: #00bfff; 
+ 		} 
+ 		.swiper-button-next, .swiper-button-prev { 
+ 			color: #00bfff; 
+ 			filter: drop-shadow(0 0 5px #00bfff); 
+ 		} 
+ 		.swiper-button-next:after, .swiper-button-prev:after { 
+ 			font-size: 2rem; 
+ 		} 
+ 		.accordion-content { 
+ 			max-height: 0; 
+ 			overflow: hidden; 
+ 			transition: max-height 0.5s ease-out; 
+ 		} 
+ 		.accordion-title .arrow { 
+ 			transition: transform 0.3s ease; 
+ 		} 
+ 	</style> 
+ </head> 
+ <body class="antialiased"> 
 
-	<nav id="main-nav" class="fixed top-0 left-0 right-0 nav-blur z-50 shadow-lg border-b border-cyan-500/20 transition-transform duration-300">
-		<div class="container mx-auto px-4">
-			<div class="flex items-center justify-between h-16">
-				<a href="#" class="font-orbitron text-white text-lg font-bold glow-text">QISF</a>
-				<div class="relative">
-					<button id="sections-menu-button" class="font-orbitron text-white hover:text-cyan-300 transition-colors duration-300 flex items-center">
-						Sections <i class="fas fa-chevron-down ml-2 text-xs"></i>
-					</button>
-					<div id="sections-dropdown" class="absolute right-0 mt-2 w-72 nav-blur rounded-lg shadow-xl border border-cyan-500/30 hidden overflow-hidden">
-						<div id="nav-links-container" class="max-h-96 overflow-y-auto">
-							</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</nav>
+ 	<div id="particles-js"></div> 
 
-	<div class="relative min-h-screen overflow-x-hidden pt-16">
-		<header class="text-center py-16 px-4 fade-in">
-			<h1 class="font-orbitron text-4xl md:text-6xl font-bold text-white glow-text">Quantum Substrate: The Informational Fabric of Reality</h1>
-			<p class="mt-4 text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
-				Based on the QISF by Joshua L. Hagen (<a href="https://x.com/_JoshuaHagen_" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:text-cyan-200 transition-colors duration-300">Follow on X</a>). <br>A resolution of foundational mysteries where Information is the substance from which all reality emerges.
-			</p>
-			<div class="mt-8">
-				<a href="#quick-links" class="bg-cyan-500/30 text-white font-orbitron py-3 px-8 rounded-lg border border-cyan-400 hover:bg-cyan-500/50 transition-all duration-300 shadow-lg hover:shadow-cyan-400/50">
-					Explore The Mysteries
-				</a>
-			</div>
-		</header>
+ 	<div class="relative min-h-screen overflow-x-hidden"> 
+ 		<header class="text-center py-16 px-4 fade-in"> 
+ 			<h1 class="font-orbitron text-4xl md:text-6xl font-bold text-white glow-text">Quantum Substrate: The Informational Fabric of Reality</h1> 
+ 			<p class="mt-4 text-lg md:text-xl text-gray-300 max-w-3xl mx-auto"> 
+ 				Based on the QISF by Joshua L. Hagen (<a href="https://x.com/_JoshuaHagen_" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:text-cyan-200 transition-colors duration-300">Follow on X</a>). 
+ 				<br>A resolution of foundational mysteries where Information is the substance from which all reality emerges. 
+ 			</p> 
+ 		</header> 
 
-		<section id="quick-links" class="container mx-auto px-4 pb-16 fade-in">
-			<h2 class="font-orbitron text-white glow-text section-title">Table of Contents</h2>
-			<div id="quick-links-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-				</div>
-		</section>
+ 		<main id="mysteries-container" class="container mx-auto px-4 pb-16"> 
+ 			<!-- Sections and mystery cards will be injected here by JavaScript --> 
+ 		</main> 
 
-		<main id="mysteries-container" class="container mx-auto px-4 pb-16">
-			</main>
+ 		<footer class="text-center py-8 px-4 border-t border-t-cyan-500/20 fade-in"> 
+ 			<p class="text-gray-400">Exploring the fabric of reality through the Quantum Informational Substrate Field.</p> 
+ 			<div class="flex justify-center items-center space-x-4 mt-4"> 
+ 				<a href="https://zenodo.org/records/16414311" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:text-cyan-200 transition-colors duration-300"> 
+ 					Read the Full Paper 
+ 				</a> 
+ 				<span>|</span> 
+ 				<a href="https://x.com/_JoshuaHagen_" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:text-cyan-200 transition-colors duration-300"> 
+ 					Follow on X 
+ 				</a> 
+ 			</div> 
+ 			<p class="text-xs text-gray-500 mt-4"> 
+ 				The content of this site is licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer" class="underline hover:text-cyan-300">Creative Commons Attribution-NonCommercial 4.0 International</a>. | Updated August 2025 
+ 			</p> 
+ 		</footer> 
+ 	</div> 
 
-		<footer class="text-center py-8 px-4 border-t border-t-cyan-500/20 fade-in">
-			<p class="text-gray-400">Exploring the fabric of reality through the Quantum Informational Substrate Field.</p>
-			<div class="flex justify-center items-center space-x-4 mt-4">
-				<a href="https://zenodo.org/records/16414311" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:text-cyan-200 transition-colors duration-300">
-					Read the Full Paper
-				</a>
-				<span>|</span>
-				<a href="https://x.com/_JoshuaHagen_" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:text-cyan-200 transition-colors duration-300">
-					Follow on X
-				</a>
-			</div>
-			<p class="text-xs text-gray-500 mt-4">
-				The content of this site is licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer" class="underline hover:text-cyan-300">Creative Commons Attribution-NonCommercial 4.0 International</a>. | Updated August 2025
-			</p>
-		</footer>
-	</div>
+ 	<!-- Libraries --> 
+ 	<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> 
+ 	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script> 
 
-	<button id="back-to-top" title="Go to top" class="grid">
-		<i class="fas fa-arrow-up"></i>
-	</button>
-	<button id="animation-control" title="Toggle Animation">
-		<i id="animation-icon" class="fas fa-pause"></i>
-	</button>
+ 	<script> 
+ 		// --- Particle.js Configuration --- 
+ 		particlesJS('particles-js', { 
+ 			"particles": { "number": { "value": 100, "density": { "enable": true, "value_area": 800 } }, "color": { "value": "#00bfff" }, "shape": { "type": "circle", }, "opacity": { "value": 0.5, "random": true, }, "size": { "value": 3, "random": true, }, "line_linked": { "enable": true, "distance": 150, "color": "#00bfff", "opacity": 0.4, "width": 1 }, "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false, } }, "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true }, "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 1 } }, "push": { "particles_nb": 4 }, } }, "retina_detect": true 
+ 		}); 
 
-	<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-	
-	<script>
-		// --- Particle.js Configuration ---
-		let particlesJSInstance;
-		let isParticlesRunning = true;
-		function initParticles() {
-			particlesJS('particles-js', {
-			"particles": { "number": { "value": 100, "density": { "enable": true, "value_area": 800 } }, "color": { "value": "#00bfff" }, "shape": { "type": "circle", }, "opacity": { "value": 0.5, "random": true, }, "size": { "value": 3, "random": true, }, "line_linked": { "enable": true, "distance": 150, "color": "#00bfff", "opacity": 0.4, "width": 1 }, "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false, } }, "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true }, "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 1 } }, "push": { "particles_nb": 4 }, } }, "retina_detect": true
-			});
-			particlesJSInstance = window.pJSDom[0].pJS;
-		}
-		initParticles();
-
-	// --- COMPLETE CONTENT DATABASE ---
+ 		// --- COMPLETE CONTENT DATABASE ---
 	const mysteries = {
 		theWork: [
 			{
 				title: "The Work", icon: "🗺️",
-				story: `<p class="mb-4">Six years ago, I was just a guy from a small town in Minnesota, completely obsessed with Nikola Tesla. I wasn't a physicist. I wasn't a mathematician. I was just hooked on his idea that the universe wasn't a dead machine, but was alive with vibrations.</p><p class="mb-4">The more I studied him, the more I realized the very people who called his most brilliant ideas 'fringe' were basing their own beliefs on established, but incomplete, scientific models. They were certain they were right, but their foundation was flawed.</p><p class="mb-4">I knew I couldn't make that same mistake. If I was going to build a true map of reality, I couldn't start from someone else's incomplete work. I had to start from the only fact any of us knows for absolute certain: "I am." That was my ground zero.</p><p class="mb-4">My journey began from there, not in a university, but in my own curiosity. With no formal path to follow, I created my own. A 'natural interest' method. It was a breadcrumb trail that led me across the entire map of human thought. A question about quantum entanglement would lead me to the mystery of consciousness. To understand what ancient cultures thought about consciousness, I'd find myself deep in religious texts and the strange geometry of their sacred sites. A pattern I saw carved on a pyramid wall would suddenly reappear in the double-helix of our own DNA. I realized the same physics that governed a healthy cell seemed to echo in the principles of a healthy mind, and its breakdown mirrored the chaos I saw in social sciences.</p><p class="mb-4">I wasn't just jumping between subjects; I was discovering that physics, biology, history, and even religion were all just different facets of the same, single, underlying reality. The connections were coming so fast and were so wild that it felt less like I was studying and more like I was receiving a massive, high-speed download. Not being forced to stay in one lane, I started to see the connections that were hidden in plain sight. I started seeing patterns everywhere.</p><p class="mb-4">For years, I wrestled with it. I built this massive framework of ideas that felt true, but I was missing the a piece that would make it all hold up. I knew the universe couldn't be perfect; it needed some kind of "flaw" to exist at all. I couldn't find it, and the frustration caused me to step away. For a few weeks, I just… stopped. I gave up. And then, something shifted.</p><p class="mb-4">I had a dream so vivid it felt more like a memory. In it, there was a man I had never seen before. He didn’t speak, he just stood there with a gentle look on his face, waving me over, encouraging me to come closer. I remember lifting my foot to take that first step… and I woke up instantly. It felt less like my own dream and more like an echo left in my mind.</p><p class="mb-4">I couldn't shake it. And all day, these strange fragments of information just kept repeating in my head: the number 32, the word theta, and the idea of math. I could not connect them. So I did a quick search and there he was. The man that waved me over. His name was Srinivasa Ramanujan. I was dumbfounded. I read his story, and the pieces started to connect. And then I found it. The work he was most famous for… a series of strange, beautiful equations he called “mock theta functions.” They described a pattern that was almost perfect, but contained a necessary, well-defined "shadow". That shadow… that beautiful flaw… was the engine of all creation.</p><p class="mb-4">That was the key I had been missing. That was the moment the obsession became a real, physical theory. From that one piece, I was able to build a single framework that derives all of known physics, provides a physical model for consciousness, and makes specific, testable predictions.</p><p class="mb-4">This isn't just a story. The math from my framework predicted that a dark matter particle should exist with a mass of around 95 GeV. The world's biggest science experiments are, right now, seeing strange, unexplained hints at exactly that mass. The framework predicted that the expansion of the universe isn't constant. The latest cosmological data is now confirming it.</p><p class="mb-4">This was a deep human journey. It was one person, in a basement, chasing a feeling until the answer finally broke through. But it has led to a real, testable, and validated new map of reality.</p><p>This is a rediscovery of an ancient wisdom, but this time, it's backed by science. I hope you'll join me in exploring it.</p>`
+				story: `Six years ago, I was just a guy from a small town in Minnesota, completely obsessed with Nikola Tesla. I wasn't a physicist. I wasn't a mathematician. I was just hooked on his idea that the universe wasn't a dead machine, but was alive with vibrations. The more I studied him, the more I realized the very people who called his most brilliant ideas 'fringe' were basing their own beliefs on established, but incomplete, scientific models. They were certain they were right, but their foundation was flawed. \n\nI knew I couldn't make that same mistake. If I was going to build a true map of reality, I couldn't start from someone else's incomplete work. I had to start from the only fact any of us knows for absolute certain: "I am." That was my ground zero.\n\n My journey began from there, not in a university, but in my own curiosity. With no formal path to follow, I created my own. A 'natural interest' method. It was a breadcrumb trail that led me across the entire map of human thought. A question about quantum entanglement would lead me to the mystery of consciousness. To understand what ancient cultures thought about consciousness, I'd find myself deep in religious texts and the strange geometry of their sacred sites. A pattern I saw carved on a pyramid wall would suddenly reappear in the double-helix of our own DNA. I realized the same physics that governed a healthy cell seemed to echo in the principles of a healthy mind, and its breakdown mirrored the chaos I saw in social sciences. \n\nI wasn't just jumping between subjects; I was discovering that physics, biology, history, and even religion were all just different facets of the same, single, underlying reality. The connections were coming so fast and were so wild that it felt less like I was studying and more like I was receiving a massive, high-speed download. Not being forced to stay in one lane, I started to see the connections that were hidden in plain sight. I started seeing patterns everywhere. \n\nFor years, I wrestled with it. I built this massive framework of ideas that felt true, but I was missing the a piece that would make it all hold up. I knew the universe couldn't be perfect; it needed some kind of "flaw" to exist at all. I couldn't find it, and the frustration caused me to step away. For a few weeks, I just… stopped. I gave up. And then, something shifted. \n\nI had a dream so vivid it felt more like a memory. In it, there was a man I had never seen before. He didn’t speak, he just stood there with a gentle look on his face, waving me over, encouraging me to come closer. I remember lifting my foot to take that first step… and I woke up instantly. It felt less like my own dream and more like an echo left in my mind. \n\nI couldn't shake it. And all day, these strange fragments of information just kept repeating in my head: the number 32, the word theta, and the idea of math. I could not connect them. So I did a quick search and there he was. The man that waved me over. His name was Srinivasa Ramanujan. I was dumbfounded. I read his story, and the pieces started to connect. And then I found it. The work he was most famous for… a series of strange, beautiful equations he called “mock theta functions.” They described a pattern that was almost perfect, but contained a necessary, well-defined "shadow". That shadow… that beautiful flaw… was the engine of all creation. \n\nThat was the key I had been missing. That was the moment the obsession became a real, physical theory. From that one piece, I was able to build a single framework that derives all of known physics, provides a physical model for consciousness, and makes specific, testable predictions. This isn't just a story. The math from my framework predicted that a dark matter particle should exist with a mass of around 95 GeV. The world's biggest science experiments are, right now, seeing strange, unexplained hints at exactly that mass. The framework predicted that the expansion of the universe isn't constant. The latest cosmological data is now confirming it. \n\nThis was a deep human journey. It was one person, in a basement, chasing a feeling until the answer finally broke through. But it has led to a real, testable, and validated new map of reality. \n\nThis is a rediscovery of an ancient wisdom, but this time, it's backed by science. I hope you'll join me in exploring it.`
 			}
 		],
 		breakthroughs: [
@@ -1030,7 +912,8 @@
 			{
 				title: "Riemann Hypothesis", icon: "🔢",
 				mechanism: `<strong>The hypothesis reflects a deep stability criterion for how informational systems can be constructed. The zeros on the critical line represent a condition of "informational harmony."</strong> The laws of mathematics are an emergent property of the QISF's logical structure. A zero straying from the line would imply an instability forbidden by the Coherence Principle, which ensures self-consistent systems.`,
-				implication: `<strong>The hypothesis is the mathematical reflection of the Coherence Principle. Its truth is a prerequisite for a universe capable of generating observers who can discover it.</strong> It reveals that the universeis a deep statement about how these atoms are distributed. The QISF suggests this is not a coincidence, but a reflection of the universe's fundamental law of coherence. The 'critical line' in the Riemann Hypothesis represents a fundamental condition of stability, a path of perfect 'informational harmony.' A zero straying from this line would be like a fundamental note in the cosmic symphony being out of tune.`
+				implication: `<strong>The hypothesis is the mathematical reflection of the Coherence Principle. Its truth is a prerequisite for a universe capable of generating observers who can discover it.</strong> It reveals that the universe, at its deepest level, is built upon profound mathematical elegance and order, a principle that also allowed for the evolution of the mathematical mind itself.`,
+				diveIn: `The prime numbers are the 'atoms' of mathematics. The Riemann Hypothesis is a deep statement about how these atoms are distributed. The QISF suggests this is not a coincidence, but a reflection of the universe's fundamental law of coherence. The 'critical line' in the Riemann Hypothesis represents a fundamental condition of stability, a path of perfect 'informational harmony.' A zero straying from this line would be like a fundamental note in the cosmic symphony being out of tune.`
 			},
 			{
 				title: "The Nature of Mathematics", icon: "➗",
@@ -1215,7 +1098,7 @@
 				diveIn: `The idea that we might be living in a computer simulation is popular. The QISF framework suggests that this is, in a profound sense, true, but not in the way we usually imagine. We are not living in a simulation running on some alien's supercomputer. The universe itself IS the computer. The QISF is the ultimate hardware and software, a universal 'processor' constantly running a single program: the VEID. The rich, complex, evolving reality we experience is the output of this cosmic computation. There is no 'programmer' in the sky, and no 'outside' to the simulation.`
 			},
 			{
-				title: "Objective vs. Subjective Reality", icon: "↔",
+				title: "Objective vs. Subjective Reality", icon: "↔️",
 				mechanism: `<strong>Objective reality is the total state of the QISF (Ψ<sub>QISF</sub>). Subjective reality is the experience of a localized, self-referential pattern within it (Ψ<sub>mind</sub>).</strong> The map (subjective) is not the territory (objective), but both are made of the same informational 'paper.'`,
 				implication: `<strong>There is one universe, but billions of worlds.</strong> This resolves the paradox by defining both realities as physically real. The objective universe exists independent of observers, but the subjective experience of it is a unique, valid, and irreducible part of that universe's total informational content.`,
 				diveIn: `The question of whether the world 'out there' is the same as the world in our heads has plagued philosophy for centuries. The QISF offers a clear distinction. The objective universe is the complete, infinite, and non-local informational field. Your subjective reality is the unique, filtered, and localized experience of that field generated by the specific informational pattern that is your consciousness. Your brain is a receiver tuned to a specific channel. The broadcast (objective reality) is the same for everyone, but the show you experience (subjective reality) depends entirely on your personal receiver. Both are physically real, and both are made of pure information.`
@@ -1308,8 +1191,6 @@
 	// --- Dynamic Content Generation and Interaction Logic ---
 	document.addEventListener('DOMContentLoaded', () => {
 		const container = document.getElementById('mysteries-container');
-		const navLinksContainer = document.getElementById('nav-links-container');
-		const quickLinksGrid = document.getElementById('quick-links-grid');
 		let cardIndex = 0;
 
 		const sectionTitles = {
@@ -1334,8 +1215,8 @@
 			technology: "Technological & Future Horizons",
 			abstract: "The Abstract Realm"
 		};
-
-        const sectionOrder = [
+		
+		const sectionOrder = [
             'theWork', 
             'breakthroughs', 
             'foundations', 
@@ -1357,305 +1238,170 @@
             'technology', 
             'abstract'
         ];
-		
-		const allSectionElements = [];
 
-		sectionOrder.forEach(sectionKey => {
-			if (!mysteries[sectionKey] || mysteries[sectionKey].length === 0) return;
+		sectionOrder.forEach(sectionKey => { 
+ 				if (!mysteries[sectionKey]) return; 
 
-			// --- Setup Section Container and Title ---
-			const sectionContainer = document.createElement('section');
-			sectionContainer.id = sectionKey;
-			sectionContainer.className = 'section-container my-12 fade-in';
-			allSectionElements.push(sectionContainer);
+ 				const sectionContainer = document.createElement('div'); 
+ 				sectionContainer.className = 'section-container my-12'; 
+ 				 
+ 				const titleEl = document.createElement('h2'); 
+ 				titleEl.className = 'font-orbitron text-white glow-text section-title'; 
+ 				titleEl.textContent = sectionTitles[sectionKey]; 
+ 				 
+ 				if (window.innerWidth < 768) { 
+ 					titleEl.classList.add('accordion-title'); 
+ 					titleEl.innerHTML += ' <span class="arrow inline-block text-cyan-400 text-2xl">▸</span>'; 
+ 				} 
+ 				sectionContainer.appendChild(titleEl); 
 
-			const titleEl = document.createElement('h2');
-			titleEl.className = 'font-orbitron text-white glow-text section-title';
-			titleEl.textContent = sectionTitles[sectionKey];
-			sectionContainer.appendChild(titleEl);
+ 				const contentContainer = document.createElement('div'); 
+ 				contentContainer.className = window.innerWidth < 768 ? 'accordion-content' : 'grid-container'; 
 
-			// --- Create Navigation and Quick Links ---
-			const navLink = document.createElement('a');
-			navLink.href = `#${sectionKey}`;
-			navLink.textContent = sectionTitles[sectionKey];
-			navLink.className = 'nav-link block px-4 py-3 text-white hover:bg-cyan-500/20 transition-colors duration-300';
-			navLinksContainer.appendChild(navLink);
+ 				let grid; 
+ 				if (window.innerWidth >= 768) { 
+ 					grid = document.createElement('div'); 
+ 					let columns = 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'; 
+ 					if (['theWork'].includes(sectionKey)) columns = 'grid-cols-1'; 
+ 					if (['breakthroughs', 'resolvedEnigmas'].includes(sectionKey)) columns = 'grid-cols-1 md:grid-cols-2'; 
+ 					 
+ 					grid.className = `grid ${columns} gap-8`; 
+ 				} else { 
+ 					grid = document.createElement('div'); 
+ 					grid.className = 'swiper-container relative'; 
+ 					grid.innerHTML = '<div class="swiper-wrapper"></div><div class="swiper-pagination"></div><div class="swiper-button-prev"></div><div class="swiper-button-next"></div>'; 
+ 				} 
+ 				 
+ 				mysteries[sectionKey].forEach((mystery) => { 
+ 					const cardWrapper = document.createElement('div'); 
+ 					cardWrapper.className = 'card rounded-lg shadow-lg cursor-pointer fade-in'; 
+ 					if(window.innerWidth < 768) { 
+ 						cardWrapper.classList.add('swiper-slide'); 
+ 					} 
+ 					 
+ 					cardWrapper.style.transitionDelay = `${(cardIndex % 3) * 100}ms`; 
 
-			const quickLink = document.createElement('a');
-			quickLink.href = `#${sectionKey}`;
-			quickLink.className = 'quick-link-card p-4 text-center font-orbitron text-gray-300 flex items-center justify-center';
-			quickLink.textContent = sectionTitles[sectionKey];
-			quickLinksGrid.appendChild(quickLink);
-			
-			// --- Create the 3D Carousel for the section ---
-			if (sectionKey !== 'theWork') { // Keep 'The Work' as a single card display
-				const carouselContainer = document.createElement('div');
-				carouselContainer.className = 'carousel-container';
+ 					let cardBackHTML; 
 
-				const carouselWheel = document.createElement('div');
-				carouselWheel.className = 'carousel-wheel';
-				carouselWheel.dataset.rotation = "0"; // Store current rotation
+ 					if (!mystery.mechanism) { // Handles cards with only 'story' 
+ 						cardBackHTML = ` 
+ 							<div class="w-full h-full flex flex-col"> 
+ 								<div class="flex-grow overflow-y-auto pt-4 text-left"> 
+ 									<p class="text-gray-300">${mystery.story}</p> 
+ 								</div> 
+ 								<div class="flex-shrink-0 pt-4 text-center"> 
+ 									<button class="text-sm text-cyan-400 hover:text-white transition-colors duration-300 close-btn">Return</button> 
+ 								</div> 
+ 							</div>`; 
+ 					} else { 
+ 						cardBackHTML = ` 
+ 							<div class="w-full h-full flex flex-col"> 
+ 								<div class="flex-shrink-0"> 
+ 									<div class="flex border-b border-cyan-500/30 text-sm md:text-base"> 
+ 										<div class="tab tab-code active" data-tab="mechanism">The Code</div> 
+ 										<div class="tab tab-meaning" data-tab="implication">The Meaning</div> 
+ 										<div class="tab tab-story" data-tab="diveIn">The Story</div> 
+ 									</div> 
+ 								</div> 
+ 								<div class="flex-grow overflow-y-auto pt-4 px-1"> 
+ 									<div id="mechanism-${cardIndex}" class="tab-content active"><p class="text-gray-300">${mystery.mechanism}</p></div> 
+ 									<div id="implication-${cardIndex}" class="tab-content"><p class="text-gray-300">${mystery.implication}</p></div> 
+ 									<div id="diveIn-${cardIndex}" class="tab-content"><p class="text-gray-300">${mystery.diveIn}</p></div> 
+ 								</div> 
+ 								<div class="flex-shrink-0 pt-4 text-center"> 
+ 									<button class="text-sm text-cyan-400 hover:text-white transition-colors duration-300 close-btn">Return to Mysteries</button> 
+ 								</div> 
+ 							</div>`; 
+ 					} 
 
-				mysteries[sectionKey].forEach(mystery => {
-					const cardWrapper = createCard(mystery, cardIndex);
-					cardWrapper.classList.add('carousel-card'); // Add carousel-specific class
-					carouselWheel.appendChild(cardWrapper);
-					cardIndex++;
-				});
+ 					cardWrapper.innerHTML = ` 
+ 						<div class="card-inner"> 
+ 							<div class="card-face card-front"> 
+ 								<div class="text-6xl mb-4">${mystery.icon}</div> 
+ 								<h2 class="font-orbitron text-2xl font-bold text-center text-cyan-300 glow-text">${mystery.title}</h2> 
+ 								<p class="mt-4 text-gray-400 text-center">Click to uncover</p> 
+ 							</div> 
+ 							<div class="card-face card-back text-left"> 
+ 								${cardBackHTML} 
+ 							</div> 
+ 						</div>`; 
 
-				carouselContainer.appendChild(carouselWheel);
+ 					if (window.innerWidth < 768) { 
+ 						grid.querySelector('.swiper-wrapper').appendChild(cardWrapper); 
+ 					} else { 
+ 						grid.appendChild(cardWrapper); 
+ 					} 
+ 					cardIndex++; 
+ 				}); 
+ 				contentContainer.appendChild(grid); 
+ 				sectionContainer.appendChild(contentContainer); 
+ 				container.appendChild(sectionContainer); 
+ 			}); 
 
-				// Add Next/Prev buttons for desktop
-				const prevButton = document.createElement('button');
-				prevButton.className = 'carousel-nav prev grid place-items-center';
-				prevButton.innerHTML = '<i class="fas fa-chevron-left"></i>';
-				
-				const nextButton = document.createElement('button');
-				nextButton.className = 'carousel-nav next grid place-items-center';
-				nextButton.innerHTML = '<i class="fas fa-chevron-right"></i>';
+ 			if (window.innerWidth < 768) { 
+ 				document.querySelectorAll('.swiper-container').forEach(swiperEl => { 
+ 					new Swiper(swiperEl, { 
+ 						effect: 'coverflow', grabCursor: true, centeredSlides: true, slidesPerView: 'auto', 
+ 						coverflowEffect: { rotate: 50, stretch: 0, depth: 100, modifier: 1, slideShadows: true, }, 
+ 						pagination: { el: swiperEl.querySelector('.swiper-pagination'), clickable: true, }, 
+ 						navigation: { nextEl: swiperEl.querySelector('.swiper-button-next'), prevEl: swiperEl.querySelector('.swiper-button-prev'), }, 
+ 					}); 
+ 				}); 
 
-				carouselContainer.appendChild(prevButton);
-				carouselContainer.appendChild(nextButton);
-				sectionContainer.appendChild(carouselContainer);
+ 				document.querySelectorAll('.accordion-title').forEach(title => { 
+ 					title.addEventListener('click', () => { 
+ 						const content = title.nextElementSibling; 
+ 						const arrow = title.querySelector('.arrow'); 
+ 						if (content.style.maxHeight) { 
+ 							content.style.maxHeight = null; 
+ 							arrow.style.transform = 'rotate(0deg)'; 
+ 						} else { 
+ 							content.style.maxHeight = content.scrollHeight + "px"; 
+ 							arrow.style.transform = 'rotate(90deg)'; 
+ 						} 
+ 					}); 
+ 				}); 
+ 			} 
 
-				setupCarousel(carouselContainer);
+ 			container.addEventListener('click', (e) => { 
+ 				const card = e.target.closest('.card'); 
+ 				if (!card) return; 
+ 				 
+ 				const currentCardIndex = Array.from(document.querySelectorAll('.card')).indexOf(card); 
 
-			} else { // Special handling for 'The Work' section
-				const cardWrapper = createCard(mysteries.theWork[0], cardIndex);
-				cardWrapper.classList.add('mx-auto');
-				sectionContainer.appendChild(cardWrapper);
-				cardIndex++;
-			}
-			
-			container.appendChild(sectionContainer);
-		});
+ 				if (e.target.closest('.close-btn')) { 
+ 					card.classList.remove('is-flipped'); 
+ 					return; 
+ 				} 
+ 				 
+ 				if (e.target.closest('.tab')) { 
+ 					const tab = e.target.closest('.tab'); 
+ 					const tabName = tab.dataset.tab; 
+ 					card.querySelectorAll('.tab').forEach(t => t.classList.remove('active')); 
+ 					tab.classList.add('active'); 
+ 					card.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active')); 
+ 					card.querySelector(`#${tabName}-${currentCardIndex}`).classList.add('active'); 
+ 					return; 
+ 				} 
+ 				 
+ 				if (!card.classList.contains('is-flipped')) { 
+ 					card.classList.add('is-flipped'); 
+ 				} 
+ 			}); 
 
-		// NEW: Function to create a single card element
-		function createCard(mystery, index) {
-			const cardWrapper = document.createElement('div');
-			cardWrapper.className = 'card rounded-lg shadow-lg cursor-pointer';
-			cardWrapper.dataset.tiltable = "true"; // Mark this card for the tilt effect
+ 			const faders = document.querySelectorAll('.fade-in'); 
+ 			const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }; 
+ 			const appearOnScroll = new IntersectionObserver(function(entries, observer) { 
+ 				entries.forEach(entry => { 
+ 					if (entry.isIntersecting) { 
+ 						entry.target.classList.add('visible'); 
+ 						observer.unobserve(entry.target); 
+ 					} 
+ 				}); 
+ 			}, appearOptions); 
+ 			faders.forEach(fader => appearOnScroll.observe(fader)); 
+ 		}); 
+ 	</script> 
+ </body> 
+ </html>
 
-			let cardBackHTML;
-			if (!mystery.mechanism) { // Single story cards
-				cardBackHTML = `<div class="w-full h-full flex flex-col"><div class="flex-grow overflow-y-auto pt-4 text-left"><p class="text-gray-300">${mystery.story}</p></div><div class="flex-shrink-0 pt-4 text-center"><button class="text-sm text-cyan-400 hover:text-white transition-colors duration-300 close-btn">Return</button></div></div>`;
-			} else { // Tabbed cards
-				cardBackHTML = `<div class="w-full h-full flex flex-col"><div class="flex-shrink-0"><div class="flex border-b border-cyan-500/30 text-sm md:text-base"><div class="tab tab-code active" data-tab="mechanism">The Code</div><div class="tab tab-meaning" data-tab="implication">The Meaning</div><div class="tab tab-story" data-tab="diveIn">The Story</div></div></div><div class="flex-grow overflow-y-auto pt-4 px-1"><div id="mechanism-${index}" class="tab-content active"><p class="text-gray-300">${mystery.mechanism}</p></div><div id="implication-${index}" class="tab-content"><p class="text-gray-300">${mystery.implication}</p></div><div id="diveIn-${index}" class="tab-content"><p class="text-gray-300">${mystery.diveIn}</p></div></div><div class="flex-shrink-0 pt-4 text-center"><button class="text-sm text-cyan-400 hover:text-white transition-colors duration-300 close-btn">Return</button></div></div>`;
-			}
-
-			cardWrapper.innerHTML = `<div class="card-inner"><div class="card-face card-front"><div class="text-6xl mb-4">${mystery.icon}</div><h2 class="font-orbitron text-2xl font-bold text-center text-cyan-300 glow-text">${mystery.title}</h2><p class="mt-4 text-gray-400 text-center">Click to uncover</p></div><div class="card-face card-back text-left">${cardBackHTML}</div></div>`;
-			return cardWrapper;
-		}
-
-		// NEW: Function to set up a carousel's logic
-		function setupCarousel(carouselContainer) {
-			const wheel = carouselContainer.querySelector('.carousel-wheel');
-			const cards = carouselContainer.querySelectorAll('.carousel-card');
-			const prevBtn = carouselContainer.querySelector('.prev');
-			const nextBtn = carouselContainer.querySelector('.next');
-			const numCards = cards.length;
-			const angle = 360 / numCards;
-			const radius = (cards[0].offsetWidth / 2) / Math.tan(Math.PI / numCards);
-
-			cards.forEach((card, i) => {
-				card.style.setProperty('--angle', `${i * angle}deg`);
-				card.style.setProperty('--radius', `${radius}px`);
-			});
-
-			let currentRotation = 0;
-			
-			function rotateCarousel() {
-				wheel.style.transform = `translateZ(-${radius}px) rotateY(${currentRotation}deg)`;
-			}
-			
-			if(nextBtn) {
-				nextBtn.addEventListener('click', () => {
-					currentRotation -= angle;
-					rotateCarousel();
-				});
-			}
-			if(prevBtn) {
-				prevBtn.addEventListener('click', () => {
-					currentRotation += angle;
-					rotateCarousel();
-				});
-			}
-			
-			// --- NEW: Drag-to-rotate functionality for touch devices ---
-			let isDragging = false, startX, startRotation;
-			
-			wheel.addEventListener('mousedown', (e) => {
-				if(e.button !== 0) return; // Only for left click
-				isDragging = true;
-				startX = e.pageX;
-				startRotation = currentRotation;
-				wheel.style.transition = 'none'; // Disable transition while dragging
-			});
-			
-			wheel.addEventListener('mousemove', (e) => {
-				if (!isDragging) return;
-				const x = e.pageX;
-				const dx = x - startX;
-				const rotationChange = (dx / wheel.offsetWidth) * 90; // Adjust sensitivity
-				currentRotation = startRotation + rotationChange;
-				rotateCarousel();
-			});
-			
-			window.addEventListener('mouseup', () => {
-				if (!isDragging) return;
-				isDragging = false;
-				wheel.style.transition = 'transform 1s cubic-bezier(0.77, 0, 0.175, 1)';
-				// Snap to the nearest card
-				currentRotation = Math.round(currentRotation / angle) * angle;
-				rotateCarousel();
-			});
-
-			// Also handle touch events for mobile
-			wheel.addEventListener('touchstart', (e) => {
-				isDragging = true;
-				startX = e.touches[0].pageX;
-				startRotation = currentRotation;
-				wheel.style.transition = 'none';
-			}, { passive: true });
-
-			wheel.addEventListener('touchmove', (e) => {
-				if (!isDragging) return;
-				const x = e.touches[0].pageX;
-				const dx = x - startX;
-				const rotationChange = (dx / wheel.offsetWidth) * 90;
-				currentRotation = startRotation + rotationChange;
-				rotateCarousel();
-			}, { passive: true });
-
-			window.addEventListener('touchend', () => {
-				if (!isDragging) return;
-				isDragging = false;
-				wheel.style.transition = 'transform 1s cubic-bezier(0.77, 0, 0.175, 1)';
-				currentRotation = Math.round(currentRotation / angle) * angle;
-				rotateCarousel();
-			});
-
-			// Initial position
-			rotateCarousel();
-		}
-
-		// --- NEW: 3D Card Tilt Effect Logic ---
-		document.querySelectorAll('[data-tiltable="true"]').forEach(card => {
-			card.addEventListener('mousemove', e => {
-				if (card.classList.contains('is-flipped')) return; // Don't tilt when flipped
-				
-				const rect = card.getBoundingClientRect();
-				const x = e.clientX - rect.left;
-				const y = e.clientY - rect.top;
-				const { width, height } = rect;
-
-				const rotateX = ((y / height) - 0.5) * -20; // Max tilt 10deg
-				const rotateY = ((x / width) - 0.5) * 20;  // Max tilt 10deg
-				
-				card.style.transition = 'transform 0.1s linear'; // Make tilt responsive
-				card.style.transform = card.style.transform.split(') ').slice(0, 2).join(') ') + ` perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-			});
-
-			card.addEventListener('mouseleave', () => {
-				if (card.classList.contains('is-flipped')) return;
-				card.style.transition = 'transform 1s cubic-bezier(0.77, 0, 0.175, 1), box-shadow 0.3s ease'; // Restore original transition
-				const originalTransform = card.style.transform.split(') ').slice(0, 2).join(') ');
-				card.style.transform = originalTransform;
-			});
-		});
-
-
-		// --- Card Flip and Tab Logic ---
-		let isDragging = false; // Add this to prevent clicks during drag
-		container.addEventListener('click', (e) => {
-			const card = e.target.closest('.card');
-			if (!card) return;
-			
-			if (e.target.closest('.carousel-wheel') && isDragging) { return; }
-
-			const cardIndex = Array.from(document.querySelectorAll('.card')).indexOf(card);
-			
-			if (e.target.closest('.close-btn')) {
-				card.classList.remove('is-flipped'); return;
-			}
-			if (e.target.closest('.tab')) {
-				const tab = e.target.closest('.tab');
-				const tabName = tab.dataset.tab;
-				card.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-				tab.classList.add('active');
-				card.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-				card.querySelector(`#${tabName}-${cardIndex}`).classList.add('active');
-				return;
-			}
-			
-			if (!card.classList.contains('is-flipped')) {
-				card.classList.add('is-flipped');
-			}
-		});
-
-		// --- Fade-in, Navigation, and Helper Widgets Logic (unchanged) ---
-		const faders = document.querySelectorAll('.fade-in');
-		const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
-		const appearOnScroll = new IntersectionObserver(function(entries, observer) {
-			entries.forEach(entry => {
-				if (entry.isIntersecting) {
-					entry.target.classList.add('visible');
-					observer.unobserve(entry.target);
-				}
-			});
-		}, appearOptions);
-		faders.forEach(fader => appearOnScroll.observe(fader));
-		
-		// Nav Menu
-		const menuButton = document.getElementById('sections-menu-button');
-		const dropdown = document.getElementById('sections-dropdown');
-		menuButton.addEventListener('click', () => dropdown.classList.toggle('hidden'));
-		document.addEventListener('click', (e) => {
-			if (!menuButton.contains(e.target) && !dropdown.contains(e.target)) {
-				dropdown.classList.add('hidden');
-			}
-		});
-
-		// Back to top button
-		const backToTopButton = document.getElementById('back-to-top');
-		window.addEventListener('scroll', () => {
-			if (window.pageYOffset > 300) {
-				backToTopButton.style.display = 'grid';
-			} else {
-				backToTopButton.style.display = 'none';
-			}
-		});
-		backToTopButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-		// Animation control
-		const animControlButton = document.getElementById('animation-control');
-		const animControlIcon = document.getElementById('animation-icon');
-		animControlButton.addEventListener('click', () => {
-			if (isParticlesRunning) {
-				particlesJSInstance.particles.move.enable = false;
-				animControlIcon.className = 'fas fa-play';
-			} else {
-				particlesJSInstance.particles.move.enable = true;
-				particlesJSInstance.fn.particlesRefresh();
-				animControlIcon.className = 'fas fa-pause';
-			}
-			isParticlesRunning = !isParticlesRunning;
-		});
-
-		// Active Nav Link Highlighting
-		const observer = new IntersectionObserver((entries) => {
-			entries.forEach(entry => {
-				const id = entry.target.getAttribute('id');
-				const navLink = document.querySelector(`.nav-link[href="#${id}"]`);
-				if (entry.isIntersecting) {
-					document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
-					navLink.classList.add('active');
-				}
-			});
-		}, { rootMargin: '-30% 0px -70% 0px' });
-		allSectionElements.forEach(section => observer.observe(section));
-
-	});
-	</script>
-</body>
-</html> 
